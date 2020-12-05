@@ -6,66 +6,28 @@
     <description>Recent content in Posts on 慕枫的leaf</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 03 Dec 2020 22:07:53 +0800</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
-      <link>http://example.org/posts/my-first-post/</link>
-      <pubDate>Thu, 03 Dec 2020 22:07:53 +0800</pubDate>
+      <title>解决 fastjson 输出 $ref 引用问题</title>
+      <link>http://example.org/posts/fastjson/ref/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/my-first-post/</guid>
-      <description></description>
+      <guid>http://example.org/posts/fastjson/ref/</guid>
+      <description>FastJsonConfig fastJsonConfig = new FastJsonConfig(); fastJsonConfig.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect); // 关闭引用检测  fastConverter.setFastJsonConfig(fastJsonConfig); </description>
     </item>
     
     <item>
-      <title>Chinese Test</title>
-      <link>http://example.org/posts/test-chinese/</link>
-      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      <title>使用Gradle发布到Maven中央仓库</title>
+      <link>http://example.org/posts/gradle/maven-publish/</link>
+      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/test-chinese/</guid>
-      <description>正文测试 而这些并不是完全重要，更加重要的问题是， 带着这些问题，我们来审视一下学生会退会。 既然如何， 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 我们不得不面对一个非常尴尬的事实，那就是， 可是，即使是这样，学生会退会的出现仍然代表了一定的意义。 学生会退会，发生了会如何，不发生又会如何。 经过上述讨论， 生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。 学生会退会，到底应该如何实现。 这样看来， 在这种困难的抉择下，本人思来想去，寝食难安。 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 就我个人来说，学生会退会对我的意义，不能不说非常重大。 莎士比亚曾经提到过，人的一生是短的，但如果卑劣地过这一生，就太长了。这似乎解答了我的疑惑。 莫扎特说过一句富有哲理的话，谁和我一样用功，谁就会和我一样成功。这启发了我， 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 学生会退会，到底应该如何实现。 一般来说， 从这个角度来看， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 在这种困难的抉择下，本人思来想去，寝食难安。 了解清楚学生会退会到底是一种怎么样的存在，是解决一切问题的关键。 一般来说， 生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。 问题的关键究竟为何？ 而这些并不是完全重要，更加重要的问题是。
-奥斯特洛夫斯基曾经说过，共同的事业，共同的斗争，可以使人们产生忍受一切的力量。　带着这句话，我们还要更加慎重的审视这个问题： 一般来讲，我们都必须务必慎重的考虑考虑。 既然如此， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 带着这些问题，我们来审视一下学生会退会。 我认为， 我认为， 在这种困难的抉择下，本人思来想去，寝食难安。 问题的关键究竟为何？ 每个人都不得不面对这些问题。 在面对这种问题时， 要想清楚，学生会退会，到底是一种怎么样的存在。 我认为， 既然如此， 每个人都不得不面对这些问题。 在面对这种问题时， 那么， 我认为， 学生会退会因何而发生。
-引用  思念是最暖的忧伤像一双翅膀
-让我停不了飞不远在过往游荡
-不告而别的你 就算为了我着想
-这么沉痛的呵护 我怎么能翱翔
-最暖的憂傷 - 田馥甄
- 图片   Photo by Florian Klauer on Unsplash    Photo by Luca Bravo on Unsplash</description>
-    </item>
-    
-    <item>
-      <title>Markdown Syntax Guide</title>
-      <link>http://example.org/posts/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Placeholder Text</title>
-      <link>http://example.org/posts/placeholder-text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Typesetting</title>
-      <link>http://example.org/posts/math-typesetting/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Emoji Support</title>
-      <link>http://example.org/posts/emoji-support/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <guid>http://example.org/posts/gradle/maven-publish/</guid>
+      <description> 注册https://issues.sonatype.org/账号 使用 scoop 安装 gpgscoop install gpg 使用 gpg 生成密钥对  gpg --full-generate-key
+到处私钥
+gpg --export-secret-keys -o secring.gpg
+发布到 ubuntu 密钥库
+gpg --keyserver keyserver.ubuntu.com --send-keys ***********
+gpg --full-generate-key gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. 请选择您要使用的密钥类型： (1) RSA 和 RSA （默认） (2) DSA 和 Elgamal (3) DSA（仅用于签名） (4) RSA（仅用于签名） RSA 密钥的长度应在 1024 位与 4096 位之间。 您想要使用的密钥长度？(2048) 请设定这个密钥的有效期限。 0 = 密钥永不过期 &amp;lt;n&amp;gt; = 密钥在 n 天后过期 &amp;lt;n&amp;gt;w = 密钥在 n 周后过期 &amp;lt;n&amp;gt;m = 密钥在 n 月后过期 &amp;lt;n&amp;gt;y = 密钥在 n 年后过期 密钥永远不会过期 这些内容正确吗？ (y/N) y GnuPG 需要构建用户标识以辨认您的密钥。 真实姓名： 电子邮件地址： 注释： 最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码） 配置 gradle 文件，这个看官方文档吧  </description>
     </item>
     
   </channel>
