@@ -12,15 +12,15 @@ categories:
 2. 使用 scoop 安装 gpg`scoop install gpg`
 3. 使用 gpg 生成密钥对
 
-`gpg --full-generate-key`
+   `gpg --full-generate-key`
 
-到处私钥
+   到处私钥
 
-`gpg --export-secret-keys -o secring.gpg`
+   `gpg --export-secret-keys -o secring.gpg`
 
-发布到 ubuntu 密钥库
+   发布到 ubuntu 密钥库
 
-`gpg --keyserver keyserver.ubuntu.com --send-keys ***********`
+   `gpg --keyserver keyserver.ubuntu.com --send-keys ***********`
 
 ```
 gpg --full-generate-key

@@ -2,15 +2,21 @@
 &lt;span class="n">fastJsonConfig&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setSerializerFeatures&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">SerializerFeature&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">DisableCircularReferenceDetect&lt;/span>&lt;span class="o">);&lt;/span> &lt;span class="c1">// 关闭引用检测
 &lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">fastConverter&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFastJsonConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">fastJsonConfig&lt;/span>&lt;span class="o">);&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div></description></item><item><title>使用Gradle发布到Maven中央仓库</title><link>http://mapleafgo.gitee.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>http://mapleafgo.gitee.io/posts/gradle/maven-publish/</guid><description>&lt;ol>
-&lt;li>注册&lt;code>https://issues.sonatype.org/&lt;/code>账号&lt;/li>
-&lt;li>使用 scoop 安装 gpg&lt;code>scoop install gpg&lt;/code>&lt;/li>
-&lt;li>使用 gpg 生成密钥对&lt;/li>
-&lt;/ol>
+&lt;li>
+&lt;p>注册&lt;code>https://issues.sonatype.org/&lt;/code>账号&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用 scoop 安装 gpg&lt;code>scoop install gpg&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用 gpg 生成密钥对&lt;/p>
 &lt;p>&lt;code>gpg --full-generate-key&lt;/code>&lt;/p>
 &lt;p>到处私钥&lt;/p>
 &lt;p>&lt;code>gpg --export-secret-keys -o secring.gpg&lt;/code>&lt;/p>
 &lt;p>发布到 ubuntu 密钥库&lt;/p>
 &lt;p>&lt;code>gpg --keyserver keyserver.ubuntu.com --send-keys ***********&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ol>
 &lt;pre>&lt;code>gpg --full-generate-key
 gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
