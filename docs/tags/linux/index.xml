@@ -1,25 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on 慕枫的leaf</title>
-    <link>http://example.org/tags/linux/</link>
-    <description>Recent content in Linux on 慕枫的leaf</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Deepin配置使用ibus输入引擎</title>
-      <link>http://example.org/posts/linux/install_ibus/</link>
-      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/posts/linux/install_ibus/</guid>
-      <description>1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
-2、使用 im-config 切换输入法引擎   
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on 慕枫的leaf</title><link>http://mapleafgo.gitee.io/tags/linux/</link><description>Recent content in Linux on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://mapleafgo.gitee.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Deepin配置使用ibus输入引擎</title><link>http://mapleafgo.gitee.io/posts/linux/install_ibus/</link><pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><guid>http://mapleafgo.gitee.io/posts/linux/install_ibus/</guid><description>1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
+2、使用 im-config 切换输入法引擎
 直接一路确定、yes
-  
 到这一步选择 ibus，再一路确定。就搞定了
-常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了</description>
-    </item>
-    
-  </channel>
-</rss>
+常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了</description></item></channel></rss>
