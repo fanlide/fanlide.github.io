@@ -15,9 +15,7 @@
 &lt;p>&lt;code>gpg --export-secret-keys -o secring.gpg&lt;/code>&lt;/p>
 &lt;p>发布到 ubuntu 密钥库&lt;/p>
 &lt;p>&lt;code>gpg --keyserver keyserver.ubuntu.com --send-keys ***********&lt;/code>&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;pre>&lt;code>gpg --full-generate-key
+&lt;pre>&lt;code> gpg --full-generate-key
 gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -41,9 +39,11 @@ GnuPG 需要构建用户标识以辨认您的密钥。
 电子邮件地址：
 注释：
 最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
-&lt;/code>&lt;/pre>&lt;ol start="4">
-&lt;li>配置 gradle 文件，这个看&lt;a class="link" href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener"
->官方文档&lt;/a>吧&lt;/li>
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>配置 gradle 文件，这个看&lt;a class="link" href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener"
+>官方文档&lt;/a>吧&lt;/p>
+&lt;/li>
 &lt;/ol></description></item><item><title>Deepin配置使用ibus输入引擎</title><link>http://mapleafgo.gitee.io/posts/linux/install_ibus/</link><pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><guid>http://mapleafgo.gitee.io/posts/linux/install_ibus/</guid><description>&lt;img src="http://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png" alt="Featured image of post Deepin配置使用ibus输入引擎" />&lt;h3 id="1安装">1、安装&lt;/h3>
 &lt;p>&lt;code>sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4&lt;/code>&lt;/p>
 &lt;h3 id="2使用-im-config-切换输入法引擎">2、使用 im-config 切换输入法引擎&lt;/h3>
