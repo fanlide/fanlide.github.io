@@ -54,7 +54,7 @@ params:
         utterances:
             repo: mapleafgo/mapleafgo.github.io
             issueTerm: pathname
-            labele: zh-cn
+            label:
 
         remark42:
             host:
