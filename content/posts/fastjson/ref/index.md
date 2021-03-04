@@ -2,7 +2,9 @@
 title: 解决 fastjson 输出 $ref 引用问题
 date: 2020-04-21
 tags:
-  - fastjson
+  - Fastjson
+categories:
+  - Java
 ---
 
 ```java

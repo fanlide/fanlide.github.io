@@ -3,7 +3,7 @@ title: 记一次 nginx 代理问题
 date: 2019-06-30
 image: 4DC29ACB-678C-4221-AFF1-728A6AB2C449.png
 tags:
-  - nginx
+  - Nginx
 categories:
   - Nginx
 ---

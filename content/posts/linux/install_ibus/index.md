@@ -4,10 +4,9 @@ date: 2019-07-16
 image: D736D06C-7B39-4813-A96D-027E2A5F8D2D.png
 tags:
   - Linux
+  - Ibus
 categories:
   - Linux
-  - Deepin
-  - ibus
 ---
 
 ### 1、安装
