@@ -5,7 +5,7 @@ image: 4DC29ACB-678C-4221-AFF1-728A6AB2C449.png
 tags:
   - nginx
 categories:
-  - nginx
+  - Nginx
 ---
 
 ## 最终实现效果：

@@ -103,25 +103,25 @@ params:
 menu:
     main:
         - identifier: home
-          name: Home
+          name: 主页
           url: /
           weight: -100
           pre: home
 
         - identifier: about
-          name: About
+          name: 关于
           url: about
           weight: -90
           pre: user
 
         - identifier: archives
-          name: Archives
+          name: 归档
           url: archives
           weight: -70
           pre: archives
 
         - identifier: search
-          name: Search
+          name: 搜索
           url: search
           weight: -60
           pre: search
