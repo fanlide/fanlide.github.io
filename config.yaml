@@ -24,7 +24,7 @@ params:
         - posts
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon: http://gitee.com/assets/favicon.ico
 
     footer:
         since: 2020
