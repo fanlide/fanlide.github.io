@@ -14,7 +14,7 @@ categories:
 
    `gpg --full-generate-key`
 
-   到处私钥
+   导出私钥
 
    `gpg --export-secret-keys -o secring.gpg`
 
