@@ -1,4 +1,4 @@
-baseurl: http://mapleafgo.gitee.io
+baseurl: https://mapleafgo.gitee.io
 languageCode: zh-cn
 title: 慕枫的leaf
 theme: stack
@@ -24,7 +24,7 @@ params:
         - posts
     featuredImageField: image
     rssFullContent: true
-    favicon: http://gitee.com/assets/favicon.ico
+    favicon:
 
     footer:
         since: 2020
@@ -54,7 +54,7 @@ params:
         utterances:
             repo: mapleafgo/mapleafgo.github.io
             issueTerm: pathname
-            label:
+            label: 文章评论
 
         remark42:
             host:
