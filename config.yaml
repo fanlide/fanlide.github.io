@@ -50,16 +50,18 @@ params:
     comments:
         enabled: true
         provider: utterances
+        # provider: vssue
 
         utterances:
             repo: mapleafgo/mapleafgo.github.io
             issueTerm: pathname
             label: 文章评论
-
-        remark42:
-            host:
-            site:
-            locale:
+        # vssue:
+        #     platform: github
+        #     owner: mapleafgo
+        #     repo: mapleafgo.github.io
+        #     clientId: 5983b8490feaac79bca3
+        #     clientSecret: 5bf636663572a7fd99da378f6aee7c3e95099024
 
     widgets:
         enabled:
