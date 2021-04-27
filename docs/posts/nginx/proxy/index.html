@@ -1,422 +1,35 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='最终实现效果： 配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="最终实现效果： 配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。
 遇到的问题与解决方式： 1、http 自动跳转 https 这里跳转方式，百度就有好多 下面是腾讯给出的方式，也是大多数采用的方式
 server {listen 80;server_name www.domain.com; #填写绑定证书的域名rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https}这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法
-server {listen 80; #可以省略，默认就是80server_name ***; #域名return 301 https://$server_name;}2、https 请求代理到 http 服务上 location / {proxy_pass http://xxx; #代理服务地址proxy_set_header Host $host; #传输服务器地址proxy_set_header X-Real-IP $remote_addr; #传输请求地址proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）}'><title>记一次 nginx 代理问题</title>
-
-<link rel='canonical' href='https://mapleafgo.gitee.io/posts/nginx/proxy/'>
-
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='记一次 nginx 代理问题'>
-<meta property='og:description' content='最终实现效果： 配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。
+server {listen 80; #可以省略，默认就是80server_name ***; #域名return 301 https://$server_name;}2、https 请求代理到 http 服务上 location / {proxy_pass http://xxx; #代理服务地址proxy_set_header Host $host; #传输服务器地址proxy_set_header X-Real-IP $remote_addr; #传输请求地址proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）}"><title>记一次 nginx 代理问题</title><link rel=canonical href=https://mapleafgo.gitee.io/posts/nginx/proxy/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="记一次 nginx 代理问题"><meta property="og:description" content="最终实现效果： 配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。
 遇到的问题与解决方式： 1、http 自动跳转 https 这里跳转方式，百度就有好多 下面是腾讯给出的方式，也是大多数采用的方式
 server {listen 80;server_name www.domain.com; #填写绑定证书的域名rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https}这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法
-server {listen 80; #可以省略，默认就是80server_name ***; #域名return 301 https://$server_name;}2、https 请求代理到 http 服务上 location / {proxy_pass http://xxx; #代理服务地址proxy_set_header Host $host; #传输服务器地址proxy_set_header X-Real-IP $remote_addr; #传输请求地址proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）}'>
-<meta property='og:url' content='https://mapleafgo.gitee.io/posts/nginx/proxy/'>
-<meta property='og:site_name' content='慕枫的leaf'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Nginx' /><meta property='article:published_time' content='2019-06-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-06-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://mapleafgo.gitee.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png' />
-<meta name="twitter:title" content="记一次 nginx 代理问题">
-<meta name="twitter:description" content="最终实现效果： 配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。
+server {listen 80; #可以省略，默认就是80server_name ***; #域名return 301 https://$server_name;}2、https 请求代理到 http 服务上 location / {proxy_pass http://xxx; #代理服务地址proxy_set_header Host $host; #传输服务器地址proxy_set_header X-Real-IP $remote_addr; #传输请求地址proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）}"><meta property="og:url" content="https://mapleafgo.gitee.io/posts/nginx/proxy/"><meta property="og:site_name" content="慕枫的leaf"><meta property="og:type" content="article"><meta property="article:section" content="Posts"><meta property="article:tag" content="Nginx"><meta property="article:published_time" content="2019-06-30T00:00:00+00:00"><meta property="article:modified_time" content="2019-06-30T00:00:00+00:00"><meta property="og:image" content="https://mapleafgo.gitee.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png"><meta name=twitter:title content="记一次 nginx 代理问题"><meta name=twitter:description content="最终实现效果： 配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。
 遇到的问题与解决方式： 1、http 自动跳转 https 这里跳转方式，百度就有好多 下面是腾讯给出的方式，也是大多数采用的方式
 server {listen 80;server_name www.domain.com; #填写绑定证书的域名rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https}这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法
-server {listen 80; #可以省略，默认就是80server_name ***; #域名return 301 https://$server_name;}2、https 请求代理到 http 服务上 location / {proxy_pass http://xxx; #代理服务地址proxy_set_header Host $host; #传输服务器地址proxy_set_header X-Real-IP $remote_addr; #传输请求地址proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）}"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://mapleafgo.gitee.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png' />
-    </head>
-    <body class="article-page keep-sidebar">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.body.dataset.scheme = 'dark';
-        } else {
-            document.body.dataset.scheme = 'light';
-        }
-    })();
-</script><div class="container main-container flex on-phone--column extended ">
-            <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu688c9895da43354b2f6ec843bf28cefb_2353_300x0_resize_box_2.png" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-                    <span class="emoji">🍥</span>
-                
-            </figure>
-        
-        <h1 class="site-name"><a href="https://mapleafgo.gitee.io">慕枫的leaf</a></h1>
-        <h2 class="site-description">给自己留个底</h2>
-    </header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>主页</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='about'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='archives'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>归档</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='search'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>搜索</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>暗色模式</span>
-            </li>
-        
-    </ol>
-</aside>
-
-            <main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/posts/nginx/proxy/">
-                <img src="/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449_hu3115ab95d4286227ea3137d1e3cd6502_4973_800x0_resize_box_2.png"
-                        srcset="/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449_hu3115ab95d4286227ea3137d1e3cd6502_4973_800x0_resize_box_2.png 800w, /posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449_hu3115ab95d4286227ea3137d1e3cd6502_4973_1600x0_resize_box_2.png 1600w"
-                        width="800" 
-                        height="400" 
-                        loading="lazy"
-                        alt="Featured image of post 记一次 nginx 代理问题" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/nginx/" >
-                Nginx
-            </a>
-        
-    </header>
-    
-
-    <h2 class="article-title">
-        <a href="/posts/nginx/proxy/">记一次 nginx 代理问题</a>
-    </h2>
-
-    <footer class="article-time">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-        <time class="article-time--published">2019-06-30</time>
-    </footer></div>
-</header>
-
-    <section class="article-content">
-    <h2 id="最终实现效果">最终实现效果：</h2>
-<p>配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。</p>
-<h2 id="遇到的问题与解决方式">遇到的问题与解决方式：</h2>
-<h3 id="1http-自动跳转-https">1、http 自动跳转 https</h3>
-<p>这里跳转方式，百度就有好多
-下面是腾讯给出的方式，也是大多数采用的方式</p>
-<pre><code>server {
+server {listen 80; #可以省略，默认就是80server_name ***; #域名return 301 https://$server_name;}2、https 请求代理到 http 服务上 location / {proxy_pass http://xxx; #代理服务地址proxy_set_header Host $host; #传输服务器地址proxy_set_header X-Real-IP $remote_addr; #传输请求地址proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）}"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://mapleafgo.gitee.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png"></head><body class="article-page keep-sidebar"><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hu688c9895da43354b2f6ec843bf28cefb_2353_300x0_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+<span class=emoji>🍥</span></figure><h1 class=site-name><a href=https://mapleafgo.gitee.io>慕枫的leaf</a></h1><h2 class=site-description>给自己留个底</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>主页</span></a></li><li><a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>关于</span></a></li><li><a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>归档</span></a></li><li><a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>搜索</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>暗色模式</span></li></ol></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/posts/nginx/proxy/><img src=/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449_hu3115ab95d4286227ea3137d1e3cd6502_4973_800x0_resize_box_2.png srcset="/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449_hu3115ab95d4286227ea3137d1e3cd6502_4973_800x0_resize_box_2.png 800w, /posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449_hu3115ab95d4286227ea3137d1e3cd6502_4973_1600x0_resize_box_2.png 1600w" width=800 height=400 loading=lazy alt="Featured image of post 记一次 nginx 代理问题"></a></div><div class=article-details><header class=article-category><a href=/categories/nginx/>Nginx</a></header><h2 class=article-title><a href=/posts/nginx/proxy/>记一次 nginx 代理问题</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2019-06-30</time></footer></div></header><section class=article-content><h2 id=最终实现效果>最终实现效果：</h2><p>配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。</p><h2 id=遇到的问题与解决方式>遇到的问题与解决方式：</h2><h3 id=1http-自动跳转-https>1、http 自动跳转 https</h3><p>这里跳转方式，百度就有好多
+下面是腾讯给出的方式，也是大多数采用的方式</p><pre><code>server {
     listen 80;
     server_name www.domain.com; #填写绑定证书的域名
     rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
 }
-</code></pre><p>这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法</p>
-<pre><code>server {
+</code></pre><p>这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法</p><pre><code>server {
     listen 80; #可以省略，默认就是80
     server_name ***; #域名
     return 301 https://$server_name;
 }
-</code></pre><h3 id="2https-请求代理到-http-服务上">2、https 请求代理到 http 服务上</h3>
-<pre><code>location / {
+</code></pre><h3 id=2https-请求代理到-http-服务上>2、https 请求代理到 http 服务上</h3><pre><code>location / {
     proxy_pass http://xxx; #代理服务地址
     proxy_set_header Host $host; #传输服务器地址
     proxy_set_header X-Real-IP $remote_addr; #传输请求地址
     proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）
 }
-</code></pre>
-</section>
-
-
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/nginx/">Nginx</a>
-        
-    </section>
-
-
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    </footer>
-
-    
-</article>
-
-     
-        
-    <link rel="stylesheet" href="https://unpkg.com/vssue/dist/vssue.min.css" />
-
-<div id="vssue"></div>
-
-<script src="https://unpkg.com/vue/dist/vue.runtime.min.js"></script>
-<script src="https://unpkg.com/vssue/dist/vssue.github.min.js"></script>
-
-<script>
-    new Vue({
-        el: "#vssue",
-        render: (h) =>
-            h("Vssue", {
-                props: {
-                    title: "记一次 nginx 代理问题",
-                    options: {
-                        proxy: (url) => "https://cors-anywhere.azm.workers.dev/" + url,
-                        owner: "mapleafgo",
-                        repo: "mapleafgo.github.io",
-                        clientId: "5983b8490feaac79bca3",
-                        clientSecret: "5bf636663572a7fd99da378f6aee7c3e95099024",
-                    },
-                },
-            }),
-    });
-</script>
-
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2020 - 
-        
-        2021 慕枫的leaf
-    </section>
-    
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
-            >
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
-</html>
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/nginx/>Nginx</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><link rel=stylesheet href=https://unpkg.com/vssue/dist/vssue.min.css><div id=vssue></div><script src=https://unpkg.com/vue/dist/vue.runtime.min.js></script><script src=https://unpkg.com/vssue/dist/vssue.github.min.js></script><script>new Vue({el:"#vssue",render:a=>a("Vssue",{props:{title:"记一次 nginx 代理问题",options:{proxy:a=>"https://cors-anywhere.azm.workers.dev/"+a,owner:"mapleafgo",repo:"mapleafgo.github.io",clientId:"5983b8490feaac79bca3",clientSecret:"5bf636663572a7fd99da378f6aee7c3e95099024"}}})})</script><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2021 慕枫的leaf</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.3.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>

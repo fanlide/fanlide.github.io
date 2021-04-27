@@ -1,37 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Java on 慕枫的leaf</title>
-    <link>https://mapleafgo.gitee.io/categories/java/</link>
-    <description>Recent content in Java on 慕枫的leaf</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.gitee.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>解决 fastjson 输出 $ref 引用问题</title>
-      <link>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</guid>
-      <description>FastJsonConfig fastJsonConfig = new FastJsonConfig(); fastJsonConfig.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect); // 关闭引用检测  fastConverter.setFastJsonConfig(fastJsonConfig); </description>
-    </item>
-    
-    <item>
-      <title>使用Gradle发布到Maven中央仓库</title>
-      <link>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</link>
-      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</guid>
-      <description>注册https://issues.sonatype.org/账号
-  使用 scoop 安装 gpgscoop install gpg
-  使用 gpg 生成密钥对
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on 慕枫的leaf</title><link>https://mapleafgo.gitee.io/categories/java/</link><description>Recent content in Java on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.gitee.io/categories/java/index.xml" rel="self" type="application/rss+xml"/><item><title>解决 fastjson 输出 $ref 引用问题</title><link>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</link><pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</guid><description>FastJsonConfig fastJsonConfig = new FastJsonConfig(); fastJsonConfig.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect); // 关闭引用检测 fastConverter.setFastJsonConfig(fastJsonConfig);</description></item><item><title>使用Gradle发布到Maven中央仓库</title><link>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</guid><description>注册https://issues.sonatype.org/账号
+使用 scoop 安装 gpgscoop install gpg
+使用 gpg 生成密钥对
 gpg --full-generate-key
 导出私钥
 gpg --export-secret-keys -o secring.gpg
 发布到 ubuntu 密钥库
 gpg --keyserver keyserver.ubuntu.com --send-keys ***********
- gpg --full-generate-keygpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.This is free software: you are free to change and redistribute it.There is NO WARRANTY, to the extent permitted by law.请选择您要使用的密钥类型：(1) RSA 和 RSA （默认）(2) DSA 和 Elgamal(3) DSA（仅用于签名）(4) RSA（仅用于签名）RSA 密钥的长度应在 1024 位与 4096 位之间。您想要使用的密钥长度？(2048)请设定这个密钥的有效期限。0 = 密钥永不过期&amp;lt;n&amp;gt; = 密钥在 n 天后过期&amp;lt;n&amp;gt;w = 密钥在 n 周后过期&amp;lt;n&amp;gt;m = 密钥在 n 月后过期&amp;lt;n&amp;gt;y = 密钥在 n 年后过期密钥永远不会过期这些内容正确吗？ (y/N) yGnuPG 需要构建用户标识以辨认您的密钥。真实姓名：电子邮件地址：注释：最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）  配置 gradle 文件，这个看官方文档吧</description>
-    </item>
-    
-  </channel>
-</rss>
+gpg --full-generate-key
+gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+请选择您要使用的密钥类型：
+(1) RSA 和 RSA （默认）
+(2) DSA 和 Elgamal
+(3) DSA（仅用于签名）
+(4) RSA（仅用于签名）
+RSA 密钥的长度应在 1024 位与 4096 位之间。
+您想要使用的密钥长度？(2048)
+请设定这个密钥的有效期限。
+0 = 密钥永不过期
+&amp;lt;n&amp;gt; = 密钥在 n 天后过期
+&amp;lt;n&amp;gt;w = 密钥在 n 周后过期
+&amp;lt;n&amp;gt;m = 密钥在 n 月后过期
+&amp;lt;n&amp;gt;y = 密钥在 n 年后过期
+密钥永远不会过期
+这些内容正确吗？ (y/N) y
+GnuPG 需要构建用户标识以辨认您的密钥。
+真实姓名：
+电子邮件地址：
+注释：
+最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
+配置 gradle 文件，这个看官方文档吧</description></item></channel></rss>
