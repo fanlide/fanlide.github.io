@@ -1,6 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>测试脚本 on 慕枫的leaf</title><link>https://mapleafgo.gitee.io/tags/%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link><description>Recent content in 测试脚本 on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 04 Mar 2021 16:06:29 +0800</lastBuildDate><atom:link href="https://mapleafgo.gitee.io/tags/%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>Jmeter 用脚本处理器对数据进行处理</title><link>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</link><pubDate>Thu, 04 Mar 2021 16:06:29 +0800</pubDate><guid>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</guid><description>前两天在项目中写 jmeter 测试脚本，项目中唯一 ID 得调用端请求时生成并传送，于是查资料、翻官网文档，终于写出来了。
-示例中我们使用简单的百度翻译的词典 API 请求 json 数据。
-说明下，这里为啥要用 groovy 脚本，因为官网说 groovy 脚本会缓存编译结果，可提高性能。而且 groovy 脚本基本跟 Java 没啥区别
-首先先创建个简单的 HTTP 请求 打开 jmeter 后，先在根节点(Test Plan)下新建个线程组(Thread Group)，默认的线程组配置就够我们本次示例用了 在线程组下新建个 Http 请求(HTTP Request)，再新建个结果树展示(View Results Tree) 配置 Http 请求，首先是协议(Protocol): https ，服务地址(Server Name): fanyi.baidu.com ，请求类型: POST ，Path: /sug 添加个请求参数(Parameters)，点击Add，Name: kw，Value: test 点击运行，或者使用快捷键Ctrl+R，运行结束在结果树中查看结果，看看是否请求成功 在发起请求前，填充数据 首先说说我们要达到的预期，我们要在请求参数中清理掉原本kw参数的test值，填充上新的参数值success
-在写下面的东西前，先附上官方文档，这是 JSR233 前置处理器的文档。
-先在 Http 请求节点下新建个 JSR223 前置处理器(JSR223 PreProcessor)，当然，也可以在同级节点建(不过必须要在请求节点后)，同级建的话，处理器的作用域就是同级节点的所有请求</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>测试脚本 on 慕枫的leaf</title>
+    <link>https://mapleafgo.gitee.io/tags/%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/</link>
+    <description>Recent content in 测试脚本 on 慕枫的leaf</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 04 Mar 2021 16:06:29 +0800</lastBuildDate><atom:link href="https://mapleafgo.gitee.io/tags/%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jmeter 用脚本处理器对数据进行处理</title>
+      <link>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</link>
+      <pubDate>Thu, 04 Mar 2021 16:06:29 +0800</pubDate>
+      
+      <guid>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</guid>
+      <description>前两天在项目中写 jmeter 测试脚本，项目中唯一 ID 得调用端请求时生成并传送，于是查资料、翻官网文档，终于写出来了。
+  示例中我们使用简单的百度翻译的词典 API 请求 json 数据。
+ 说明下，这里为啥要用 groovy 脚本，因为官网说 groovy 脚本会缓存编译结果，可提高性能。而且 groovy 脚本基本跟 Java 没啥区别
+首先先创建个简单的 HTTP 请求  打开 jmeter 后，先在根节点(Test Plan)下新建个线程组(Thread Group)，默认的线程组配置就够我们本次示例用了 在线程组下新建个 Http 请求(HTTP Request)，再新建个结果树展示(View Results Tree) 配置 Http 请求，首先是协议(Protocol): https ，服务地址(Server Name): fanyi.baidu.com ，请求类型: POST ，Path: /sug 添加个请求参数(Parameters)，点击Add，Name: kw，Value: test 点击运行，或者使用快捷键Ctrl+R，运行结束在结果树中查看结果，看看是否请求成功  在发起请求前，填充数据  首先说说我们要达到的预期，我们要在请求参数中清理掉原本kw参数的test值，填充上新的参数值success
+  在写下面的东西前，先附上官方文档，这是 JSR233 前置处理器的文档。
+   先在 Http 请求节点下新建个 JSR223 前置处理器(JSR223 PreProcessor)，当然，也可以在同级节点建(不过必须要在请求节点后)，同级建的话，处理器的作用域就是同级节点的所有请求</description>
+    </item>
+    
+  </channel>
+</rss>

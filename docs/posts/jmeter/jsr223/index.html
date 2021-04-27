@@ -1,26 +1,458 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="用groovy脚本处理数据"><title>Jmeter 用脚本处理器对数据进行处理</title><link rel=canonical href=https://mapleafgo.gitee.io/posts/jmeter/jsr223/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Jmeter 用脚本处理器对数据进行处理"><meta property="og:description" content="用groovy脚本处理数据"><meta property="og:url" content="https://mapleafgo.gitee.io/posts/jmeter/jsr223/"><meta property="og:site_name" content="慕枫的leaf"><meta property="og:type" content="article"><meta property="article:section" content="Posts"><meta property="article:tag" content="Jmeter"><meta property="article:tag" content="测试脚本"><meta property="article:published_time" content="2021-03-04T16:06:29+08:00"><meta property="article:modified_time" content="2021-03-04T16:06:29+08:00"><meta name=twitter:title content="Jmeter 用脚本处理器对数据进行处理"><meta name=twitter:description content="用groovy脚本处理数据"></head><body class="article-page keep-sidebar"><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hu688c9895da43354b2f6ec843bf28cefb_2353_300x0_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
-<span class=emoji>🍥</span></figure><h1 class=site-name><a href=https://mapleafgo.gitee.io>慕枫的leaf</a></h1><h2 class=site-description>给自己留个底</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>主页</span></a></li><li><a href=about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>关于</span></a></li><li><a href=archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>归档</span></a></li><li><a href=search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>搜索</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>暗色模式</span></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/test/>测试</a></header><h2 class=article-title><a href=/posts/jmeter/jsr223/>Jmeter 用脚本处理器对数据进行处理</a></h2><h3 class=article-subtitle>用groovy脚本处理数据</h3><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2021-03-04</time></footer></div></header><section class=article-content><blockquote><p>前两天在项目中写 jmeter 测试脚本，项目中唯一 ID 得调用端请求时生成并传送，于是查资料、翻官网文档，终于写出来了。</p></blockquote><blockquote><p>示例中我们使用简单的百度翻译的词典 API 请求 json 数据。</p></blockquote><p>说明下，这里为啥要用 groovy 脚本，因为官网说 groovy 脚本会缓存编译结果，可提高性能。而且 groovy 脚本基本跟 Java 没啥区别</p><h3 id=首先先创建个简单的-http-请求>首先先创建个简单的 HTTP 请求</h3><ul><li>打开 jmeter 后，先在根节点(Test Plan)下新建个线程组(Thread Group)，默认的线程组配置就够我们本次示例用了</li><li>在线程组下新建个 Http 请求(HTTP Request)，再新建个结果树展示(View Results Tree)</li><li>配置 Http 请求，首先是协议(Protocol): <code>https</code> ，服务地址(Server Name): <code>fanyi.baidu.com</code> ，请求类型: <code>POST</code> ，Path: <code>/sug</code></li><li>添加个请求参数(Parameters)，点击<code>Add</code>，Name: <code>kw</code>，Value: <code>test</code></li><li>点击运行，或者使用快捷键<code>Ctrl+R</code>，运行结束在结果树中查看结果，看看是否请求成功</li></ul><h3 id=在发起请求前填充数据>在发起请求前，填充数据</h3><blockquote><p>首先说说我们要达到的预期，我们要在请求参数中清理掉原本<code>kw</code>参数的<code>test</code>值，填充上新的参数值<code>success</code></p></blockquote><blockquote><p>在写下面的东西前，先附上<a class=link href=https://jmeter.apache.org/usermanual/component_reference.html#JSR223_PreProcessor target=_blank rel=noopener>官方文档</a>，这是 JSR233 前置处理器的文档。</p></blockquote><ul><li><p>先在 Http 请求节点下新建个 JSR223 前置处理器(JSR223 PreProcessor)，当然，也可以在同级节点建(不过必须要在请求节点后)，同级建的话，处理器的作用域就是同级节点的所有请求</p></li><li><p>选择脚本 <code>groovy</code></p></li><li><p>编写脚本</p><div class=highlight><pre class=chroma><code class=language-groovy data-lang=groovy><span class=c1>// 获取请求参数
-</span><span class=c1></span><span class=kt>def</span> <span class=n>params</span> <span class=o>=</span> <span class=n>sampler</span><span class=o>.</span><span class=na>getArguments</span><span class=o>();</span>
-<span class=c1>// 获取第一个参数，这里排序跟请求节点的参数顺序挂钩
-</span><span class=c1></span><span class=kt>def</span> <span class=n>kw</span> <span class=o>=</span> <span class=n>params</span><span class=o>.</span><span class=na>getArgument</span><span class=o>(</span><span class=mi>0</span><span class=o>);</span>
-<span class=c1>// 赋予kw新值
-</span><span class=c1></span><span class=n>kw</span><span class=o>.</span><span class=na>setValue</span><span class=o>(</span><span class=s2>&#34;success&#34;</span><span class=o>);</span>
-</code></pre></div></li><li><p>运行测试下请求参数是否已经更改</p></li></ul><p>写到这里，我真的忍不住想吐槽下，这请求参数藏的够深的啊 😑 官方文档也没写这点，要不是看 API 文档，还真就不一定发现的了 Arguments。官方文档里 <code>Parameters</code>、<code>args</code>、<code>ctx</code>、<code>props</code>都试了，活生生让我试出来的啊 😤！！！</p><h3 id=在请求结束后对返回的数据进行格式化处理>在请求结束后，对返回的数据进行格式化处理</h3><blockquote><p>返回数据的处理，主要是对返回的数据进行解码、Json 格式的缩进展示</p></blockquote><blockquote><p>后置处理就方便的多了，在 JSR223 后置处理器(JSR223 PostProcessor)中，有<code>prev</code>参数可直接操作结果集</p></blockquote><ul><li><p>同前置处理器一样，先建个 JSR223 后置处理器节点，作用域同前置处理器</p></li><li><p>同样，脚本选择<code>groovy</code></p></li><li><p>编写脚本</p><div class=highlight><pre class=chroma><code class=language-groovy data-lang=groovy><span class=kn>import</span> <span class=nn>groovy.json.JsonOutput</span><span class=o>;</span>
-<span class=kn>import</span> <span class=nn>org.apache.commons.lang3.StringEscapeUtils</span><span class=o>;</span>
-<span class=c1>// 字符串的形式读取返回数据
-</span><span class=c1></span><span class=kt>def</span> <span class=n>data</span> <span class=o>=</span> <span class=n>prev</span><span class=o>.</span><span class=na>getResponseDataAsString</span><span class=o>();</span>
-<span class=c1>// 格式化json数据
-</span><span class=c1></span><span class=kt>def</span> <span class=n>json</span> <span class=o>=</span> <span class=n>JsonOutput</span><span class=o>.</span><span class=na>prettyPrint</span><span class=o>(</span><span class=n>data</span><span class=o>);</span>
-<span class=c1>// 对数据进行Unicode转中文的解码
-</span><span class=c1></span><span class=kt>def</span> <span class=n>ret</span> <span class=o>=</span> <span class=n>StringEscapeUtils</span><span class=o>.</span><span class=na>unescapeJava</span><span class=o>(</span><span class=n>json</span><span class=o>);</span>
-<span class=c1>// 把我们转换后的数据设置为返回结果，编码设置为UTF-8
-</span><span class=c1></span><span class=n>prev</span><span class=o>.</span><span class=na>setResponseData</span><span class=o>(</span><span class=n>ret</span><span class=o>,</span> <span class=s2>&#34;UTF-8&#34;</span><span class=o>);</span>
-</code></pre></div></li><li><p>运行测试结果，完美结束！</p></li></ul><p>至此整个前置后置的处理就完美了</p></section><footer class=article-footer><section class=article-tags><a href=/tags/jmeter/>Jmeter</a>
-<a href=/tags/%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/>测试脚本</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><link rel=stylesheet href=https://unpkg.com/vssue/dist/vssue.min.css><div id=vssue></div><script src=https://unpkg.com/vue/dist/vue.runtime.min.js></script><script src=https://unpkg.com/vssue/dist/vssue.github.min.js></script><script>new Vue({el:"#vssue",render:a=>a("Vssue",{props:{title:"Jmeter 用脚本处理器对数据进行处理",options:{proxy:a=>"https://cors-anywhere.azm.workers.dev/"+a,owner:"mapleafgo",repo:"mapleafgo.github.io",clientId:"5983b8490feaac79bca3",clientSecret:"5bf636663572a7fd99da378f6aee7c3e95099024"}}})})</script><footer class=site-footer><section class=copyright>&copy;
-2020 -
-2021 慕枫的leaf</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.3.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-<button class="pswp__button pswp__button--share" title=Share></button>
-<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='用groovy脚本处理数据'><title>Jmeter 用脚本处理器对数据进行处理</title>
+
+<link rel='canonical' href='https://mapleafgo.gitee.io/posts/jmeter/jsr223/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Jmeter 用脚本处理器对数据进行处理'>
+<meta property='og:description' content='用groovy脚本处理数据'>
+<meta property='og:url' content='https://mapleafgo.gitee.io/posts/jmeter/jsr223/'>
+<meta property='og:site_name' content='慕枫的leaf'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Jmeter' /><meta property='article:tag' content='测试脚本' /><meta property='article:published_time' content='2021-03-04T16:06:29&#43;08:00'/><meta property='article:modified_time' content='2021-03-04T16:06:29&#43;08:00'/>
+<meta name="twitter:title" content="Jmeter 用脚本处理器对数据进行处理">
+<meta name="twitter:description" content="用groovy脚本处理数据">
+    </head>
+    <body class="article-page keep-sidebar">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended ">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu688c9895da43354b2f6ec843bf28cefb_2353_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://mapleafgo.gitee.io">慕枫的leaf</a></h1>
+        <h2 class="site-description">给自己留个底</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/test/" >
+                测试
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/posts/jmeter/jsr223/">Jmeter 用脚本处理器对数据进行处理</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        用groovy脚本处理数据
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-03-04</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <blockquote>
+<p>前两天在项目中写 jmeter 测试脚本，项目中唯一 ID 得调用端请求时生成并传送，于是查资料、翻官网文档，终于写出来了。</p>
+</blockquote>
+<blockquote>
+<p>示例中我们使用简单的百度翻译的词典 API 请求 json 数据。</p>
+</blockquote>
+<p>说明下，这里为啥要用 groovy 脚本，因为官网说 groovy 脚本会缓存编译结果，可提高性能。而且 groovy 脚本基本跟 Java 没啥区别</p>
+<h3 id="首先先创建个简单的-http-请求">首先先创建个简单的 HTTP 请求</h3>
+<ul>
+<li>打开 jmeter 后，先在根节点(Test Plan)下新建个线程组(Thread Group)，默认的线程组配置就够我们本次示例用了</li>
+<li>在线程组下新建个 Http 请求(HTTP Request)，再新建个结果树展示(View Results Tree)</li>
+<li>配置 Http 请求，首先是协议(Protocol): <code>https</code> ，服务地址(Server Name): <code>fanyi.baidu.com</code> ，请求类型: <code>POST</code> ，Path: <code>/sug</code></li>
+<li>添加个请求参数(Parameters)，点击<code>Add</code>，Name: <code>kw</code>，Value: <code>test</code></li>
+<li>点击运行，或者使用快捷键<code>Ctrl+R</code>，运行结束在结果树中查看结果，看看是否请求成功</li>
+</ul>
+<h3 id="在发起请求前填充数据">在发起请求前，填充数据</h3>
+<blockquote>
+<p>首先说说我们要达到的预期，我们要在请求参数中清理掉原本<code>kw</code>参数的<code>test</code>值，填充上新的参数值<code>success</code></p>
+</blockquote>
+<blockquote>
+<p>在写下面的东西前，先附上<a class="link" href="https://jmeter.apache.org/usermanual/component_reference.html#JSR223_PreProcessor"  target="_blank" rel="noopener"
+    >官方文档</a>，这是 JSR233 前置处理器的文档。</p>
+</blockquote>
+<ul>
+<li>
+<p>先在 Http 请求节点下新建个 JSR223 前置处理器(JSR223 PreProcessor)，当然，也可以在同级节点建(不过必须要在请求节点后)，同级建的话，处理器的作用域就是同级节点的所有请求</p>
+</li>
+<li>
+<p>选择脚本 <code>groovy</code></p>
+</li>
+<li>
+<p>编写脚本</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="c1">// 获取请求参数
+</span><span class="c1"></span><span class="kt">def</span> <span class="n">params</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="na">getArguments</span><span class="o">();</span>
+<span class="c1">// 获取第一个参数，这里排序跟请求节点的参数顺序挂钩
+</span><span class="c1"></span><span class="kt">def</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="na">getArgument</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+<span class="c1">// 赋予kw新值
+</span><span class="c1"></span><span class="n">kw</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s2">&#34;success&#34;</span><span class="o">);</span>
+</code></pre></div></li>
+<li>
+<p>运行测试下请求参数是否已经更改</p>
+</li>
+</ul>
+<p>写到这里，我真的忍不住想吐槽下，这请求参数藏的够深的啊 😑 官方文档也没写这点，要不是看 API 文档，还真就不一定发现的了 Arguments。官方文档里 <code>Parameters</code>、<code>args</code>、<code>ctx</code>、<code>props</code>都试了，活生生让我试出来的啊 😤！！！</p>
+<h3 id="在请求结束后对返回的数据进行格式化处理">在请求结束后，对返回的数据进行格式化处理</h3>
+<blockquote>
+<p>返回数据的处理，主要是对返回的数据进行解码、Json 格式的缩进展示</p>
+</blockquote>
+<blockquote>
+<p>后置处理就方便的多了，在 JSR223 后置处理器(JSR223 PostProcessor)中，有<code>prev</code>参数可直接操作结果集</p>
+</blockquote>
+<ul>
+<li>
+<p>同前置处理器一样，先建个 JSR223 后置处理器节点，作用域同前置处理器</p>
+</li>
+<li>
+<p>同样，脚本选择<code>groovy</code></p>
+</li>
+<li>
+<p>编写脚本</p>
+<div class="highlight"><pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="kn">import</span> <span class="nn">groovy.json.JsonOutput</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.lang3.StringEscapeUtils</span><span class="o">;</span>
+<span class="c1">// 字符串的形式读取返回数据
+</span><span class="c1"></span><span class="kt">def</span> <span class="n">data</span> <span class="o">=</span> <span class="n">prev</span><span class="o">.</span><span class="na">getResponseDataAsString</span><span class="o">();</span>
+<span class="c1">// 格式化json数据
+</span><span class="c1"></span><span class="kt">def</span> <span class="n">json</span> <span class="o">=</span> <span class="n">JsonOutput</span><span class="o">.</span><span class="na">prettyPrint</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+<span class="c1">// 对数据进行Unicode转中文的解码
+</span><span class="c1"></span><span class="kt">def</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">StringEscapeUtils</span><span class="o">.</span><span class="na">unescapeJava</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+<span class="c1">// 把我们转换后的数据设置为返回结果，编码设置为UTF-8
+</span><span class="c1"></span><span class="n">prev</span><span class="o">.</span><span class="na">setResponseData</span><span class="o">(</span><span class="n">ret</span><span class="o">,</span> <span class="s2">&#34;UTF-8&#34;</span><span class="o">);</span>
+</code></pre></div></li>
+<li>
+<p>运行测试结果，完美结束！</p>
+</li>
+</ul>
+<p>至此整个前置后置的处理就完美了</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/jmeter/">Jmeter</a>
+        
+            <a href="/tags/%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC/">测试脚本</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+     
+        
+    <link rel="stylesheet" href="https://unpkg.com/vssue/dist/vssue.min.css" />
+
+<div id="vssue"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.runtime.min.js"></script>
+<script src="https://unpkg.com/vssue/dist/vssue.github.min.js"></script>
+
+<script>
+    new Vue({
+        el: "#vssue",
+        render: (h) =>
+            h("Vssue", {
+                props: {
+                    title: "Jmeter 用脚本处理器对数据进行处理",
+                    options: {
+                        proxy: (url) => "https://cors-anywhere.azm.workers.dev/" + url,
+                        owner: "mapleafgo",
+                        repo: "mapleafgo.github.io",
+                        clientId: "5983b8490feaac79bca3",
+                        clientSecret: "5bf636663572a7fd99da378f6aee7c3e95099024",
+                    },
+                },
+            }),
+    });
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 慕枫的leaf
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

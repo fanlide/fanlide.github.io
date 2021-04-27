@@ -1,25 +1,433 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
 2、使用 im-config 切换输入法引擎 
 直接一路确定、yes
 
 到这一步选择 ibus，再一路确定。就搞定了
-常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了"><title>Deepin配置使用ibus输入引擎</title><link rel=canonical href=https://mapleafgo.gitee.io/posts/linux/install_ibus/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Deepin配置使用ibus输入引擎"><meta property="og:description" content="1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
+常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了'><title>Deepin配置使用ibus输入引擎</title>
+
+<link rel='canonical' href='https://mapleafgo.gitee.io/posts/linux/install_ibus/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Deepin配置使用ibus输入引擎'>
+<meta property='og:description' content='1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
 2、使用 im-config 切换输入法引擎 
 直接一路确定、yes
 
 到这一步选择 ibus，再一路确定。就搞定了
-常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了"><meta property="og:url" content="https://mapleafgo.gitee.io/posts/linux/install_ibus/"><meta property="og:site_name" content="慕枫的leaf"><meta property="og:type" content="article"><meta property="article:section" content="Posts"><meta property="article:tag" content="Linux"><meta property="article:tag" content="Ibus"><meta property="article:published_time" content="2019-07-16T00:00:00+00:00"><meta property="article:modified_time" content="2019-07-16T00:00:00+00:00"><meta property="og:image" content="https://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png"><meta name=twitter:title content="Deepin配置使用ibus输入引擎"><meta name=twitter:description content="1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
+常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了'>
+<meta property='og:url' content='https://mapleafgo.gitee.io/posts/linux/install_ibus/'>
+<meta property='og:site_name' content='慕枫的leaf'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='Ibus' /><meta property='article:published_time' content='2019-07-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-07-16T00:00:00&#43;00:00'/><meta property='og:image' content='https://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png' />
+<meta name="twitter:title" content="Deepin配置使用ibus输入引擎">
+<meta name="twitter:description" content="1、安装 sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4
 2、使用 im-config 切换输入法引擎 
 直接一路确定、yes
 
 到这一步选择 ibus，再一路确定。就搞定了
-常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png"></head><body class="article-page keep-sidebar"><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.body.dataset.scheme='dark':document.body.dataset.scheme='light'})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header class=site-info><figure class=site-avatar><img src=/img/avatar_hu688c9895da43354b2f6ec843bf28cefb_2353_300x0_resize_box_2.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
-<span class=emoji>🍥</span></figure><h1 class=site-name><a href=https://mapleafgo.gitee.io>慕枫的leaf</a></h1><h2 class=site-description>给自己留个底</h2></header><ol class=menu id=main-menu><li><a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg><span>主页</span></a></li><li><a href=about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg><span>关于</span></a></li><li><a href=archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg><span>归档</span></a></li><li><a href=search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg><span>搜索</span></a></li><li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><span>暗色模式</span></li></ol></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/posts/linux/install_ibus/><img src=/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D_hu953bd577f5e4f1bc4673ecb8d410858f_40726_800x0_resize_box_2.png srcset="/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D_hu953bd577f5e4f1bc4673ecb8d410858f_40726_800x0_resize_box_2.png 800w, /posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D_hu953bd577f5e4f1bc4673ecb8d410858f_40726_1600x0_resize_box_2.png 1600w" width=800 height=292 loading=lazy alt="Featured image of post Deepin配置使用ibus输入引擎"></a></div><div class=article-details><header class=article-category><a href=/categories/linux/>Linux</a></header><h2 class=article-title><a href=/posts/linux/install_ibus/>Deepin配置使用ibus输入引擎</a></h2><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2019-07-16</time></footer></div></header><section class=article-content><h3 id=1安装>1、安装</h3><p><code>sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4</code></p><h3 id=2使用-im-config-切换输入法引擎>2、使用 im-config 切换输入法引擎</h3><p><figure style=flex-grow:194;flex-basis:467px><a href=/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png data-size=1086x557><img src=/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png srcset="/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_480x0_resize_box_2.png 480w, /posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_1024x0_resize_box_2.png 1024w" width=1086 height=557 loading=lazy></a></figure></p><p>直接一路确定、yes</p><p><figure style=flex-grow:194;flex-basis:467px><a href=/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png data-size=1086x557><img src=/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png srcset="/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_480x0_resize_box_2.png 480w, /posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_1024x0_resize_box_2.png 1024w" width=1086 height=557 loading=lazy></a></figure></p><p>到这一步选择 ibus，再一路确定。就搞定了</p><h3 id=常见问题>常见问题：</h3><p>旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到<code>/usr/share/im-config/data/</code>目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了</p></section><footer class=article-footer><section class=article-tags><a href=/tags/linux/>Linux</a>
-<a href=/tags/ibus/>Ibus</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><link rel=stylesheet href=https://unpkg.com/vssue/dist/vssue.min.css><div id=vssue></div><script src=https://unpkg.com/vue/dist/vue.runtime.min.js></script><script src=https://unpkg.com/vssue/dist/vssue.github.min.js></script><script>new Vue({el:"#vssue",render:a=>a("Vssue",{props:{title:"Deepin配置使用ibus输入引擎",options:{proxy:a=>"https://cors-anywhere.azm.workers.dev/"+a,owner:"mapleafgo",repo:"mapleafgo.github.io",clientId:"5983b8490feaac79bca3",clientSecret:"5bf636663572a7fd99da378f6aee7c3e95099024"}}})})</script><footer class=site-footer><section class=copyright>&copy;
-2020 -
-2021 慕枫的leaf</section><section class=powerby>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.3.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-<button class="pswp__button pswp__button--share" title=Share></button>
-<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>
+常见问题： 旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到/usr/share/im-config/data/目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png' />
+    </head>
+    <body class="article-page keep-sidebar">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended ">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu688c9895da43354b2f6ec843bf28cefb_2353_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://mapleafgo.gitee.io">慕枫的leaf</a></h1>
+        <h2 class="site-description">给自己留个底</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='archives'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='search'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/posts/linux/install_ibus/">
+                <img src="/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D_hu953bd577f5e4f1bc4673ecb8d410858f_40726_800x0_resize_box_2.png"
+                        srcset="/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D_hu953bd577f5e4f1bc4673ecb8d410858f_40726_800x0_resize_box_2.png 800w, /posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D_hu953bd577f5e4f1bc4673ecb8d410858f_40726_1600x0_resize_box_2.png 1600w"
+                        width="800" 
+                        height="292" 
+                        loading="lazy"
+                        alt="Featured image of post Deepin配置使用ibus输入引擎" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/posts/linux/install_ibus/">Deepin配置使用ibus输入引擎</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2019-07-16</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h3 id="1安装">1、安装</h3>
+<p><code>sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4</code></p>
+<h3 id="2使用-im-config-切换输入法引擎">2、使用 im-config 切换输入法引擎</h3>
+<p><figure style="flex-grow: 194; flex-basis: 467px">
+		<a href="/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png" data-size="1086x557"><img src="/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png"
+				srcset="/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_480x0_resize_box_2.png 480w, /posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_1024x0_resize_box_2.png 1024w"
+				width="1086"
+				height="557"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>直接一路确定、yes</p>
+<p><figure style="flex-grow: 194; flex-basis: 467px">
+		<a href="/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png" data-size="1086x557"><img src="/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png"
+				srcset="/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_480x0_resize_box_2.png 480w, /posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_1024x0_resize_box_2.png 1024w"
+				width="1086"
+				height="557"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>到这一步选择 ibus，再一路确定。就搞定了</p>
+<h3 id="常见问题">常见问题：</h3>
+<p>旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到<code>/usr/share/im-config/data/</code>目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/ibus/">Ibus</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+     
+        
+    <link rel="stylesheet" href="https://unpkg.com/vssue/dist/vssue.min.css" />
+
+<div id="vssue"></div>
+
+<script src="https://unpkg.com/vue/dist/vue.runtime.min.js"></script>
+<script src="https://unpkg.com/vssue/dist/vssue.github.min.js"></script>
+
+<script>
+    new Vue({
+        el: "#vssue",
+        render: (h) =>
+            h("Vssue", {
+                props: {
+                    title: "Deepin配置使用ibus输入引擎",
+                    options: {
+                        proxy: (url) => "https://cors-anywhere.azm.workers.dev/" + url,
+                        owner: "mapleafgo",
+                        repo: "mapleafgo.github.io",
+                        clientId: "5983b8490feaac79bca3",
+                        clientSecret: "5bf636663572a7fd99da378f6aee7c3e95099024",
+                    },
+                },
+            }),
+    });
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2021 慕枫的leaf
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

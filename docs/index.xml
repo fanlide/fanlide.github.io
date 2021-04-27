@@ -1,170 +1,229 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>慕枫的leaf</title><link>https://mapleafgo.gitee.io/</link><description>Recent content on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 04 Mar 2021 16:06:29 +0800</lastBuildDate><atom:link href="https://mapleafgo.gitee.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Jmeter 用脚本处理器对数据进行处理</title><link>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</link><pubDate>Thu, 04 Mar 2021 16:06:29 +0800</pubDate><guid>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</guid><description>&lt;blockquote>
-&lt;p>前两天在项目中写 jmeter 测试脚本，项目中唯一 ID 得调用端请求时生成并传送，于是查资料、翻官网文档，终于写出来了。&lt;/p>
-&lt;/blockquote>
-&lt;blockquote>
-&lt;p>示例中我们使用简单的百度翻译的词典 API 请求 json 数据。&lt;/p>
-&lt;/blockquote>
-&lt;p>说明下，这里为啥要用 groovy 脚本，因为官网说 groovy 脚本会缓存编译结果，可提高性能。而且 groovy 脚本基本跟 Java 没啥区别&lt;/p>
-&lt;h3 id="首先先创建个简单的-http-请求">首先先创建个简单的 HTTP 请求&lt;/h3>
-&lt;ul>
-&lt;li>打开 jmeter 后，先在根节点(Test Plan)下新建个线程组(Thread Group)，默认的线程组配置就够我们本次示例用了&lt;/li>
-&lt;li>在线程组下新建个 Http 请求(HTTP Request)，再新建个结果树展示(View Results Tree)&lt;/li>
-&lt;li>配置 Http 请求，首先是协议(Protocol): &lt;code>https&lt;/code> ，服务地址(Server Name): &lt;code>fanyi.baidu.com&lt;/code> ，请求类型: &lt;code>POST&lt;/code> ，Path: &lt;code>/sug&lt;/code>&lt;/li>
-&lt;li>添加个请求参数(Parameters)，点击&lt;code>Add&lt;/code>，Name: &lt;code>kw&lt;/code>，Value: &lt;code>test&lt;/code>&lt;/li>
-&lt;li>点击运行，或者使用快捷键&lt;code>Ctrl+R&lt;/code>，运行结束在结果树中查看结果，看看是否请求成功&lt;/li>
-&lt;/ul>
-&lt;h3 id="在发起请求前填充数据">在发起请求前，填充数据&lt;/h3>
-&lt;blockquote>
-&lt;p>首先说说我们要达到的预期，我们要在请求参数中清理掉原本&lt;code>kw&lt;/code>参数的&lt;code>test&lt;/code>值，填充上新的参数值&lt;code>success&lt;/code>&lt;/p>
-&lt;/blockquote>
-&lt;blockquote>
-&lt;p>在写下面的东西前，先附上&lt;a class="link" href="https://jmeter.apache.org/usermanual/component_reference.html#JSR223_PreProcessor" target="_blank" rel="noopener"
->官方文档&lt;/a>，这是 JSR233 前置处理器的文档。&lt;/p>
-&lt;/blockquote>
-&lt;ul>
-&lt;li>
-&lt;p>先在 Http 请求节点下新建个 JSR223 前置处理器(JSR223 PreProcessor)，当然，也可以在同级节点建(不过必须要在请求节点后)，同级建的话，处理器的作用域就是同级节点的所有请求&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>选择脚本 &lt;code>groovy&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>编写脚本&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-groovy" data-lang="groovy">&lt;span class="c1">// 获取请求参数
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">params&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sampler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getArguments&lt;/span>&lt;span class="o">();&lt;/span>
-&lt;span class="c1">// 获取第一个参数，这里排序跟请求节点的参数顺序挂钩
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">kw&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">params&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getArgument&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;span class="c1">// 赋予kw新值
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">kw&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setValue&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;success&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>运行测试下请求参数是否已经更改&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>写到这里，我真的忍不住想吐槽下，这请求参数藏的够深的啊 😑 官方文档也没写这点，要不是看 API 文档，还真就不一定发现的了 Arguments。官方文档里 &lt;code>Parameters&lt;/code>、&lt;code>args&lt;/code>、&lt;code>ctx&lt;/code>、&lt;code>props&lt;/code>都试了，活生生让我试出来的啊 😤！！！&lt;/p>
-&lt;h3 id="在请求结束后对返回的数据进行格式化处理">在请求结束后，对返回的数据进行格式化处理&lt;/h3>
-&lt;blockquote>
-&lt;p>返回数据的处理，主要是对返回的数据进行解码、Json 格式的缩进展示&lt;/p>
-&lt;/blockquote>
-&lt;blockquote>
-&lt;p>后置处理就方便的多了，在 JSR223 后置处理器(JSR223 PostProcessor)中，有&lt;code>prev&lt;/code>参数可直接操作结果集&lt;/p>
-&lt;/blockquote>
-&lt;ul>
-&lt;li>
-&lt;p>同前置处理器一样，先建个 JSR223 后置处理器节点，作用域同前置处理器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>同样，脚本选择&lt;code>groovy&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>编写脚本&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-groovy" data-lang="groovy">&lt;span class="kn">import&lt;/span> &lt;span class="nn">groovy.json.JsonOutput&lt;/span>&lt;span class="o">;&lt;/span>
-&lt;span class="kn">import&lt;/span> &lt;span class="nn">org.apache.commons.lang3.StringEscapeUtils&lt;/span>&lt;span class="o">;&lt;/span>
-&lt;span class="c1">// 字符串的形式读取返回数据
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">data&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">prev&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getResponseDataAsString&lt;/span>&lt;span class="o">();&lt;/span>
-&lt;span class="c1">// 格式化json数据
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">json&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">JsonOutput&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">prettyPrint&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;span class="c1">// 对数据进行Unicode转中文的解码
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">ret&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">StringEscapeUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">unescapeJava&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">json&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;span class="c1">// 把我们转换后的数据设置为返回结果，编码设置为UTF-8
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">prev&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setResponseData&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ret&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s2">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>运行测试结果，完美结束！&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>至此整个前置后置的处理就完美了&lt;/p></description></item><item><title>解决 fastjson 输出 $ref 引用问题</title><link>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</link><pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</guid><description>&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-java" data-lang="java"> &lt;span class="n">FastJsonConfig&lt;/span> &lt;span class="n">fastJsonConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">FastJsonConfig&lt;/span>&lt;span class="o">();&lt;/span>
-&lt;span class="n">fastJsonConfig&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setSerializerFeatures&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">SerializerFeature&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">DisableCircularReferenceDetect&lt;/span>&lt;span class="o">);&lt;/span> &lt;span class="c1">// 关闭引用检测
-&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">fastConverter&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFastJsonConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">fastJsonConfig&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>使用Gradle发布到Maven中央仓库</title><link>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</guid><description>&lt;ol>
-&lt;li>
-&lt;p>注册&lt;code>https://issues.sonatype.org/&lt;/code>账号&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>使用 scoop 安装 gpg&lt;code>scoop install gpg&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>使用 gpg 生成密钥对&lt;/p>
-&lt;p>&lt;code>gpg --full-generate-key&lt;/code>&lt;/p>
-&lt;p>导出私钥&lt;/p>
-&lt;p>&lt;code>gpg --export-secret-keys -o secring.gpg&lt;/code>&lt;/p>
-&lt;p>发布到 ubuntu 密钥库&lt;/p>
-&lt;p>&lt;code>gpg --keyserver keyserver.ubuntu.com --send-keys ***********&lt;/code>&lt;/p>
-&lt;pre>&lt;code> gpg --full-generate-key
-gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-请选择您要使用的密钥类型：
-(1) RSA 和 RSA （默认）
-(2) DSA 和 Elgamal
-(3) DSA（仅用于签名）
-(4) RSA（仅用于签名）
-RSA 密钥的长度应在 1024 位与 4096 位之间。
-您想要使用的密钥长度？(2048)
-请设定这个密钥的有效期限。
-0 = 密钥永不过期
-&amp;lt;n&amp;gt; = 密钥在 n 天后过期
-&amp;lt;n&amp;gt;w = 密钥在 n 周后过期
-&amp;lt;n&amp;gt;m = 密钥在 n 月后过期
-&amp;lt;n&amp;gt;y = 密钥在 n 年后过期
-密钥永远不会过期
-这些内容正确吗？ (y/N) y
-GnuPG 需要构建用户标识以辨认您的密钥。
-真实姓名：
-电子邮件地址：
-注释：
-最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>配置 gradle 文件，这个看&lt;a class="link" href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener"
->官方文档&lt;/a>吧&lt;/p>
-&lt;/li>
-&lt;/ol></description></item><item><title>Deepin配置使用ibus输入引擎</title><link>https://mapleafgo.gitee.io/posts/linux/install_ibus/</link><pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/linux/install_ibus/</guid><description>&lt;img src="https://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png" alt="Featured image of post Deepin配置使用ibus输入引擎" />&lt;h3 id="1安装">1、安装&lt;/h3>
-&lt;p>&lt;code>sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4&lt;/code>&lt;/p>
-&lt;h3 id="2使用-im-config-切换输入法引擎">2、使用 im-config 切换输入法引擎&lt;/h3>
-&lt;p>&lt;figure style="flex-grow: 194; flex-basis: 467px">
-&lt;a href="https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png" data-size="1086x557">&lt;img src="https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png"
-srcset="https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_480x0_resize_box_2.png 480w, https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_1024x0_resize_box_2.png 1024w"
-width="1086"
-height="557"
-loading="lazy"
->
-&lt;/a>
-&lt;/figure>&lt;/p>
-&lt;p>直接一路确定、yes&lt;/p>
-&lt;p>&lt;figure style="flex-grow: 194; flex-basis: 467px">
-&lt;a href="https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png" data-size="1086x557">&lt;img src="https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png"
-srcset="https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_480x0_resize_box_2.png 480w, https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_1024x0_resize_box_2.png 1024w"
-width="1086"
-height="557"
-loading="lazy"
->
-&lt;/a>
-&lt;/figure>&lt;/p>
-&lt;p>到这一步选择 ibus，再一路确定。就搞定了&lt;/p>
-&lt;h3 id="常见问题">常见问题：&lt;/h3>
-&lt;p>旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到&lt;code>/usr/share/im-config/data/&lt;/code>目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了&lt;/p></description></item><item><title>记一次 nginx 代理问题</title><link>https://mapleafgo.gitee.io/posts/nginx/proxy/</link><pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/nginx/proxy/</guid><description>&lt;img src="https://mapleafgo.gitee.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png" alt="Featured image of post 记一次 nginx 代理问题" />&lt;h2 id="最终实现效果">最终实现效果：&lt;/h2>
-&lt;p>配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。&lt;/p>
-&lt;h2 id="遇到的问题与解决方式">遇到的问题与解决方式：&lt;/h2>
-&lt;h3 id="1http-自动跳转-https">1、http 自动跳转 https&lt;/h3>
-&lt;p>这里跳转方式，百度就有好多
-下面是腾讯给出的方式，也是大多数采用的方式&lt;/p>
-&lt;pre>&lt;code>server {
-listen 80;
-server_name www.domain.com; #填写绑定证书的域名
-rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>慕枫的leaf</title>
+        <link>https://mapleafgo.gitee.io/</link>
+        <description>Recent content on 慕枫的leaf</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Thu, 04 Mar 2021 16:06:29 +0800</lastBuildDate><atom:link href="https://mapleafgo.gitee.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Jmeter 用脚本处理器对数据进行处理</title>
+        <link>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</link>
+        <pubDate>Thu, 04 Mar 2021 16:06:29 +0800</pubDate>
+        
+        <guid>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;前两天在项目中写 jmeter 测试脚本，项目中唯一 ID 得调用端请求时生成并传送，于是查资料、翻官网文档，终于写出来了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;示例中我们使用简单的百度翻译的词典 API 请求 json 数据。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;说明下，这里为啥要用 groovy 脚本，因为官网说 groovy 脚本会缓存编译结果，可提高性能。而且 groovy 脚本基本跟 Java 没啥区别&lt;/p&gt;
+&lt;h3 id=&#34;首先先创建个简单的-http-请求&#34;&gt;首先先创建个简单的 HTTP 请求&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;打开 jmeter 后，先在根节点(Test Plan)下新建个线程组(Thread Group)，默认的线程组配置就够我们本次示例用了&lt;/li&gt;
+&lt;li&gt;在线程组下新建个 Http 请求(HTTP Request)，再新建个结果树展示(View Results Tree)&lt;/li&gt;
+&lt;li&gt;配置 Http 请求，首先是协议(Protocol): &lt;code&gt;https&lt;/code&gt; ，服务地址(Server Name): &lt;code&gt;fanyi.baidu.com&lt;/code&gt; ，请求类型: &lt;code&gt;POST&lt;/code&gt; ，Path: &lt;code&gt;/sug&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加个请求参数(Parameters)，点击&lt;code&gt;Add&lt;/code&gt;，Name: &lt;code&gt;kw&lt;/code&gt;，Value: &lt;code&gt;test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;点击运行，或者使用快捷键&lt;code&gt;Ctrl+R&lt;/code&gt;，运行结束在结果树中查看结果，看看是否请求成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;在发起请求前填充数据&#34;&gt;在发起请求前，填充数据&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;首先说说我们要达到的预期，我们要在请求参数中清理掉原本&lt;code&gt;kw&lt;/code&gt;参数的&lt;code&gt;test&lt;/code&gt;值，填充上新的参数值&lt;code&gt;success&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在写下面的东西前，先附上&lt;a class=&#34;link&#34; href=&#34;https://jmeter.apache.org/usermanual/component_reference.html#JSR223_PreProcessor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt;，这是 JSR233 前置处理器的文档。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;先在 Http 请求节点下新建个 JSR223 前置处理器(JSR223 PreProcessor)，当然，也可以在同级节点建(不过必须要在请求节点后)，同级建的话，处理器的作用域就是同级节点的所有请求&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择脚本 &lt;code&gt;groovy&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-groovy&#34; data-lang=&#34;groovy&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取请求参数
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;params&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sampler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getArguments&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 获取第一个参数，这里排序跟请求节点的参数顺序挂钩
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kw&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getArgument&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 赋予kw新值
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;kw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setValue&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;success&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行测试下请求参数是否已经更改&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;写到这里，我真的忍不住想吐槽下，这请求参数藏的够深的啊 😑 官方文档也没写这点，要不是看 API 文档，还真就不一定发现的了 Arguments。官方文档里 &lt;code&gt;Parameters&lt;/code&gt;、&lt;code&gt;args&lt;/code&gt;、&lt;code&gt;ctx&lt;/code&gt;、&lt;code&gt;props&lt;/code&gt;都试了，活生生让我试出来的啊 😤！！！&lt;/p&gt;
+&lt;h3 id=&#34;在请求结束后对返回的数据进行格式化处理&#34;&gt;在请求结束后，对返回的数据进行格式化处理&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回数据的处理，主要是对返回的数据进行解码、Json 格式的缩进展示&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;后置处理就方便的多了，在 JSR223 后置处理器(JSR223 PostProcessor)中，有&lt;code&gt;prev&lt;/code&gt;参数可直接操作结果集&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;同前置处理器一样，先建个 JSR223 后置处理器节点，作用域同前置处理器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同样，脚本选择&lt;code&gt;groovy&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-groovy&#34; data-lang=&#34;groovy&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;groovy.json.JsonOutput&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;org.apache.commons.lang3.StringEscapeUtils&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 字符串的形式读取返回数据
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prev&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getResponseDataAsString&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 格式化json数据
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;json&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JsonOutput&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;prettyPrint&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 对数据进行Unicode转中文的解码
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StringEscapeUtils&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;unescapeJava&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 把我们转换后的数据设置为返回结果，编码设置为UTF-8
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prev&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setResponseData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行测试结果，完美结束！&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;至此整个前置后置的处理就完美了&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>解决 fastjson 输出 $ref 引用问题</title>
+        <link>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</link>
+        <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</guid>
+        <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt; &lt;span class=&#34;n&#34;&gt;FastJsonConfig&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fastJsonConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FastJsonConfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;fastJsonConfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setSerializerFeatures&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SerializerFeature&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;DisableCircularReferenceDetect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 关闭引用检测
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fastConverter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setFastJsonConfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fastJsonConfig&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>使用Gradle发布到Maven中央仓库</title>
+        <link>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</link>
+        <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</guid>
+        <description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;注册&lt;code&gt;https://issues.sonatype.org/&lt;/code&gt;账号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用 scoop 安装 gpg&lt;code&gt;scoop install gpg&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用 gpg 生成密钥对&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --full-generate-key&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;导出私钥&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --export-secret-keys -o secring.gpg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;发布到 ubuntu 密钥库&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gpg --keyserver keyserver.ubuntu.com --send-keys ***********&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   gpg --full-generate-key
+   gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
+   This is free software: you are free to change and redistribute it.
+   There is NO WARRANTY, to the extent permitted by law.
+
+   请选择您要使用的密钥类型：
+      (1) RSA 和 RSA （默认）
+      (2) DSA 和 Elgamal
+      (3) DSA（仅用于签名）
+      (4) RSA（仅用于签名）
+   RSA 密钥的长度应在 1024 位与 4096 位之间。
+   您想要使用的密钥长度？(2048)
+   请设定这个密钥的有效期限。
+            0 = 密钥永不过期
+         &amp;lt;n&amp;gt;  = 密钥在 n 天后过期
+         &amp;lt;n&amp;gt;w = 密钥在 n 周后过期
+         &amp;lt;n&amp;gt;m = 密钥在 n 月后过期
+         &amp;lt;n&amp;gt;y = 密钥在 n 年后过期
+   密钥永远不会过期
+   这些内容正确吗？ (y/N) y
+
+   GnuPG 需要构建用户标识以辨认您的密钥。
+
+   真实姓名：
+   电子邮件地址：
+   注释：
+
+   最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置 gradle 文件，这个看&lt;a class=&#34;link&#34; href=&#34;https://docs.gradle.org/current/userguide/publishing_maven.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文档&lt;/a&gt;吧&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Deepin配置使用ibus输入引擎</title>
+        <link>https://mapleafgo.gitee.io/posts/linux/install_ibus/</link>
+        <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://mapleafgo.gitee.io/posts/linux/install_ibus/</guid>
+        <description>&lt;img src="https://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png" alt="Featured image of post Deepin配置使用ibus输入引擎" /&gt;&lt;h3 id=&#34;1安装&#34;&gt;1、安装&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2使用-im-config-切换输入法引擎&#34;&gt;2、使用 im-config 切换输入法引擎&lt;/h3&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 194; flex-basis: 467px&#34;&gt;
+		&lt;a href=&#34;https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png&#34; data-size=&#34;1086x557&#34;&gt;&lt;img src=&#34;https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png&#34;
+				srcset=&#34;https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_480x0_resize_box_2.png 480w, https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1086&#34;
+				height=&#34;557&#34;
+				loading=&#34;lazy&#34;
+				&gt;
+		&lt;/a&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;直接一路确定、yes&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 194; flex-basis: 467px&#34;&gt;
+		&lt;a href=&#34;https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png&#34; data-size=&#34;1086x557&#34;&gt;&lt;img src=&#34;https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png&#34;
+				srcset=&#34;https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_480x0_resize_box_2.png 480w, https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1086&#34;
+				height=&#34;557&#34;
+				loading=&#34;lazy&#34;
+				&gt;
+		&lt;/a&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;到这一步选择 ibus，再一路确定。就搞定了&lt;/p&gt;
+&lt;h3 id=&#34;常见问题&#34;&gt;常见问题：&lt;/h3&gt;
+&lt;p&gt;旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到&lt;code&gt;/usr/share/im-config/data/&lt;/code&gt;目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>记一次 nginx 代理问题</title>
+        <link>https://mapleafgo.gitee.io/posts/nginx/proxy/</link>
+        <pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://mapleafgo.gitee.io/posts/nginx/proxy/</guid>
+        <description>&lt;img src="https://mapleafgo.gitee.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png" alt="Featured image of post 记一次 nginx 代理问题" /&gt;&lt;h2 id=&#34;最终实现效果&#34;&gt;最终实现效果：&lt;/h2&gt;
+&lt;p&gt;配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。&lt;/p&gt;
+&lt;h2 id=&#34;遇到的问题与解决方式&#34;&gt;遇到的问题与解决方式：&lt;/h2&gt;
+&lt;h3 id=&#34;1http-自动跳转-https&#34;&gt;1、http 自动跳转 https&lt;/h3&gt;
+&lt;p&gt;这里跳转方式，百度就有好多
+下面是腾讯给出的方式，也是大多数采用的方式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+    listen 80;
+    server_name www.domain.com; #填写绑定证书的域名
+    rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
 }
-&lt;/code>&lt;/pre>&lt;p>这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法&lt;/p>
-&lt;pre>&lt;code>server {
-listen 80; #可以省略，默认就是80
-server_name ***; #域名
-return 301 https://$server_name;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+    listen 80; #可以省略，默认就是80
+    server_name ***; #域名
+    return 301 https://$server_name;
 }
-&lt;/code>&lt;/pre>&lt;h3 id="2https-请求代理到-http-服务上">2、https 请求代理到 http 服务上&lt;/h3>
-&lt;pre>&lt;code>location / {
-proxy_pass http://xxx; #代理服务地址
-proxy_set_header Host $host; #传输服务器地址
-proxy_set_header X-Real-IP $remote_addr; #传输请求地址
-proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2https-请求代理到-http-服务上&#34;&gt;2、https 请求代理到 http 服务上&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;location / {
+    proxy_pass http://xxx; #代理服务地址
+    proxy_set_header Host $host; #传输服务器地址
+    proxy_set_header X-Real-IP $remote_addr; #传输请求地址
+    proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）
 }
-&lt;/code>&lt;/pre></description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
