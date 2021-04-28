@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>慕枫的leaf</title><link>https://mapleafgo.gitee.io/</link><description>Recent content on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 04 Mar 2021 16:06:29 +0800</lastBuildDate><atom:link href="https://mapleafgo.gitee.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Jmeter 用脚本处理器对数据进行处理</title><link>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</link><pubDate>Thu, 04 Mar 2021 16:06:29 +0800</pubDate><guid>https://mapleafgo.gitee.io/posts/jmeter/jsr223/</guid><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>慕枫的leaf</title><link>https://mapleafgo.github.io/</link><description>Recent content on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Jmeter 用脚本处理器对数据进行处理</title><link>https://mapleafgo.github.io/posts/jmeter/jsr223/</link><pubDate>Thu, 04 Mar 2021 16:06:29 +0800</pubDate><guid>https://mapleafgo.github.io/posts/jmeter/jsr223/</guid><description>&lt;blockquote>
 &lt;p>前两天在项目中写 jmeter 测试脚本，项目中唯一 ID 得调用端请求时生成并传送，于是查资料、翻官网文档，终于写出来了。&lt;/p>
 &lt;/blockquote>
 &lt;blockquote>
@@ -73,10 +73,10 @@
 &lt;p>运行测试结果，完美结束！&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>至此整个前置后置的处理就完美了&lt;/p></description></item><item><title>解决 fastjson 输出 $ref 引用问题</title><link>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</link><pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/java/fastjson/ref/</guid><description>&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-java" data-lang="java"> &lt;span class="n">FastJsonConfig&lt;/span> &lt;span class="n">fastJsonConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">FastJsonConfig&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;p>至此整个前置后置的处理就完美了&lt;/p></description></item><item><title>解决 fastjson 输出 $ref 引用问题</title><link>https://mapleafgo.github.io/posts/java/fastjson/ref/</link><pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/java/fastjson/ref/</guid><description>&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-java" data-lang="java"> &lt;span class="n">FastJsonConfig&lt;/span> &lt;span class="n">fastJsonConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">FastJsonConfig&lt;/span>&lt;span class="o">();&lt;/span>
 &lt;span class="n">fastJsonConfig&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setSerializerFeatures&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">SerializerFeature&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">DisableCircularReferenceDetect&lt;/span>&lt;span class="o">);&lt;/span> &lt;span class="c1">// 关闭引用检测
 &lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">fastConverter&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFastJsonConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">fastJsonConfig&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>使用Gradle发布到Maven中央仓库</title><link>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/gradle/maven-publish/</guid><description>&lt;ol>
+&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>使用Gradle发布到Maven中央仓库</title><link>https://mapleafgo.github.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/gradle/maven-publish/</guid><description>&lt;ol>
 &lt;li>
 &lt;p>注册&lt;code>https://issues.sonatype.org/&lt;/code>账号&lt;/p>
 &lt;/li>
@@ -119,12 +119,12 @@ GnuPG 需要构建用户标识以辨认您的密钥。
 &lt;p>配置 gradle 文件，这个看&lt;a class="link" href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener"
 >官方文档&lt;/a>吧&lt;/p>
 &lt;/li>
-&lt;/ol></description></item><item><title>Deepin配置使用ibus输入引擎</title><link>https://mapleafgo.gitee.io/posts/linux/install_ibus/</link><pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/linux/install_ibus/</guid><description>&lt;img src="https://mapleafgo.gitee.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png" alt="Featured image of post Deepin配置使用ibus输入引擎" />&lt;h3 id="1安装">1、安装&lt;/h3>
+&lt;/ol></description></item><item><title>Deepin配置使用ibus输入引擎</title><link>https://mapleafgo.github.io/posts/linux/install_ibus/</link><pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/linux/install_ibus/</guid><description>&lt;img src="https://mapleafgo.github.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png" alt="Featured image of post Deepin配置使用ibus输入引擎" />&lt;h3 id="1安装">1、安装&lt;/h3>
 &lt;p>&lt;code>sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4&lt;/code>&lt;/p>
 &lt;h3 id="2使用-im-config-切换输入法引擎">2、使用 im-config 切换输入法引擎&lt;/h3>
 &lt;p>&lt;figure style="flex-grow: 194; flex-basis: 467px">
-&lt;a href="https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png" data-size="1086x557">&lt;img src="https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png"
-srcset="https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_480x0_resize_box_2.png 480w, https://mapleafgo.gitee.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://mapleafgo.github.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png" data-size="1086x557">&lt;img src="https://mapleafgo.github.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png"
+srcset="https://mapleafgo.github.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_480x0_resize_box_2.png 480w, https://mapleafgo.github.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_1024x0_resize_box_2.png 1024w"
 width="1086"
 height="557"
 loading="lazy"
@@ -133,8 +133,8 @@ loading="lazy"
 &lt;/figure>&lt;/p>
 &lt;p>直接一路确定、yes&lt;/p>
 &lt;p>&lt;figure style="flex-grow: 194; flex-basis: 467px">
-&lt;a href="https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png" data-size="1086x557">&lt;img src="https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png"
-srcset="https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_480x0_resize_box_2.png 480w, https://mapleafgo.gitee.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_1024x0_resize_box_2.png 1024w"
+&lt;a href="https://mapleafgo.github.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png" data-size="1086x557">&lt;img src="https://mapleafgo.github.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png"
+srcset="https://mapleafgo.github.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_480x0_resize_box_2.png 480w, https://mapleafgo.github.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_1024x0_resize_box_2.png 1024w"
 width="1086"
 height="557"
 loading="lazy"
@@ -143,7 +143,7 @@ loading="lazy"
 &lt;/figure>&lt;/p>
 &lt;p>到这一步选择 ibus，再一路确定。就搞定了&lt;/p>
 &lt;h3 id="常见问题">常见问题：&lt;/h3>
-&lt;p>旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到&lt;code>/usr/share/im-config/data/&lt;/code>目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了&lt;/p></description></item><item><title>记一次 nginx 代理问题</title><link>https://mapleafgo.gitee.io/posts/nginx/proxy/</link><pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.gitee.io/posts/nginx/proxy/</guid><description>&lt;img src="https://mapleafgo.gitee.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png" alt="Featured image of post 记一次 nginx 代理问题" />&lt;h2 id="最终实现效果">最终实现效果：&lt;/h2>
+&lt;p>旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到&lt;code>/usr/share/im-config/data/&lt;/code>目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了&lt;/p></description></item><item><title>记一次 nginx 代理问题</title><link>https://mapleafgo.github.io/posts/nginx/proxy/</link><pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/nginx/proxy/</guid><description>&lt;img src="https://mapleafgo.github.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png" alt="Featured image of post 记一次 nginx 代理问题" />&lt;h2 id="最终实现效果">最终实现效果：&lt;/h2>
 &lt;p>配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。&lt;/p>
 &lt;h2 id="遇到的问题与解决方式">遇到的问题与解决方式：&lt;/h2>
 &lt;h3 id="1http-自动跳转-https">1、http 自动跳转 https&lt;/h3>

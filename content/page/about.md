@@ -1,27 +1,15 @@
-+++
-title = "About"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
-aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
-license = "CC BY-NC-ND"
-lastmod = "2020-10-09"
-+++
+---
+title: "About"
+description: "慕枫Go博客介绍"
+date: 2021-04-28
+author: "Mapleafgo"
+license: "CC BY-NC-ND"
+---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+关于名字，听着有点默默忧愁感哈。因为本人比较喜欢自然风景，尤其如晚霞一样的枫叶林，所以取了个“慕枫”。名字后缀的“Go”是为了增加点积极向上的精神，也是为了迎合英文名
 
-Hugo makes use of a variety of open source projects including:
+我是个普通的专科生，毕业也有好几年了。对自己一直很迷茫，不知道如何往前发展。面试过很多公司，发现自己好欠缺基础理论知识，基本问啥都答不上。虽然对自己的上手能力挺有自信，但无法入职，都是扯蛋。
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+于是觉得对自己的专业知识还是有必要提升一下，当然学习知识就不在博客更新了，毕竟都是些基础
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
-
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
-
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+这里记录的都是自己觉得毕竟偏的技术难点，都是自己遇到的
