@@ -51,6 +51,7 @@ params:
         enabled: true
         provider: vssue
         vssue:
+            autoCreateIssue: true
             platform: github
             owner: mapleafgo
             repo: mapleafgo.github.io
