@@ -49,13 +49,7 @@ params:
 
     comments:
         enabled: true
-        # provider: utterances
         provider: vssue
-
-        # utterances:
-        #     repo: mapleafgo/mapleafgo.github.io
-        #     issueTerm: pathname
-        #     label: 文章评论
         vssue:
             platform: github
             owner: mapleafgo
