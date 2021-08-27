@@ -5,9 +5,10 @@ tags:
     - 转载
 categories:
     - 设计模式
+    - Java
 ---
 
-> 转载自 [https://javadoop.com/post/design-pattern](https://javadoop.com/post/design-pattern)
+> 转载自 [javadoop -- Java设计模式](https://javadoop.com/post/design-pattern)
 
 一直想写一篇介绍设计模式的文章，让读者可以很快看完，而且一看就懂，看懂就会用，同时不会将各个模式搞混。自认为本文还是写得不错的😂😂😂，花了不少心思来写这文章和做图，力求让读者真的能看着简单同时有所收获。
 
@@ -545,7 +546,7 @@ public class FileMonitor extends FileAlterationListenerAdaptor {
 }
 ```
 
-当然，上面说的只是适配器模式的其中一种，也是最简单的一种，无需多言。下面，再介绍**“正统的”**适配器模式。
+当然，上面说的只是适配器模式的其中一种，也是最简单的一种，无需多言。下面，再介绍 **“正统的”** 适配器模式。
 
 #### 对象适配器模式
 
@@ -749,7 +750,7 @@ public static void main(String[] args) {
 
 > 从名字来简单解释下装饰器。既然说是装饰，那么往往就是**添加小功能**这种，而且，我们要满足可以添加多个小功能。最简单的，代理模式就可以实现功能的增强，但是代理不容易实现多个功能的增强，当然你可以说用代理包装代理的多层包装方式，但是那样的话代码就复杂了。
 
-首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们 **ConcreteDecorator*** 都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent* 的区别是，它们只是装饰者，起**装饰**作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中**加了层皮来装饰**而已。
+首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们 **ConcreteDecorator** 都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent* 的区别是，它们只是装饰者，起**装饰**作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中**加了层皮来装饰**而已。
 
 > 注意这段话中混杂在各个名词中的 Component 和 Decorator，别搞混了。
 

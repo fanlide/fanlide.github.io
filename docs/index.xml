@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>慕枫的leaf</title><link>https://mapleafgo.github.io/</link><description>Recent content on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 27 Aug 2021 10:41:52 +0800</lastBuildDate><atom:link href="https://mapleafgo.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>设计模式也可以这么简单</title><link>https://mapleafgo.github.io/posts/java/design-pattern/</link><pubDate>Fri, 27 Aug 2021 10:41:52 +0800</pubDate><guid>https://mapleafgo.github.io/posts/java/design-pattern/</guid><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>慕枫的leaf</title><link>https://mapleafgo.github.io/</link><description>Recent content on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 27 Aug 2021 10:41:52 +0800</lastBuildDate><atom:link href="https://mapleafgo.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>设计模式也可以这么简单</title><link>https://mapleafgo.github.io/posts/design-pattern/</link><pubDate>Fri, 27 Aug 2021 10:41:52 +0800</pubDate><guid>https://mapleafgo.github.io/posts/design-pattern/</guid><description>&lt;blockquote>
 &lt;p>转载自 &lt;a class="link" href="https://javadoop.com/post/design-pattern" target="_blank" rel="noopener"
->https://javadoop.com/post/design-pattern&lt;/a>&lt;/p>
+>javadoop &amp;ndash; Java设计模式&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>一直想写一篇介绍设计模式的文章，让读者可以很快看完，而且一看就懂，看懂就会用，同时不会将各个模式搞混。自认为本文还是写得不错的😂😂😂，花了不少心思来写这文章和做图，力求让读者真的能看着简单同时有所收获。&lt;/p>
 &lt;p>设计模式是对大家实际工作中写的各种代码进行高层次抽象的总结，其中最出名的当属 &lt;em>Gang of Four&lt;/em> (&lt;em>GoF&lt;/em>) 的分类了，他们将设计模式分类为 23 种经典的模式，根据用途我们又可以分为三大类，分别为创建型模式、结构型模式和行为型模式。&lt;/p>
@@ -84,11 +84,11 @@ style="
 flex-grow: 133;
 flex-basis: 320px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/factory-1.png" data-size="1542x1154">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/factory-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/factory-1.png" data-size="1542x1154">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/factory-1.png"
 width="1542"
 height="1154"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/factory-1_hu87b8f10cc5bffdfd14c9879d2f40c7f0_192502_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/factory-1_hu87b8f10cc5bffdfd14c9879d2f40c7f0_192502_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/factory-1_hu87b8f10cc5bffdfd14c9879d2f40c7f0_192502_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/factory-1_hu87b8f10cc5bffdfd14c9879d2f40c7f0_192502_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="factory-1">
 &lt;/a>
@@ -104,11 +104,11 @@ style="
 flex-grow: 163;
 flex-basis: 392px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-1.png" data-size="1546x946">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-1.png" data-size="1546x946">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-1.png"
 width="1546"
 height="946"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-1_hu190ee561044acfaa2ce41264c47de6d1_138472_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-1_hu190ee561044acfaa2ce41264c47de6d1_138472_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-1_hu190ee561044acfaa2ce41264c47de6d1_138472_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/abstract-factory-1_hu190ee561044acfaa2ce41264c47de6d1_138472_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="factory-1">
 &lt;/a>
@@ -132,11 +132,11 @@ style="
 flex-grow: 251;
 flex-basis: 602px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-2.png" data-size="1386x552">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-2.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-2.png" data-size="1386x552">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-2.png"
 width="1386"
 height="552"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-2_hu47a6d71e475ef557b8a3ac8f2d1113b5_64812_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-2_hu47a6d71e475ef557b8a3ac8f2d1113b5_64812_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-2_hu47a6d71e475ef557b8a3ac8f2d1113b5_64812_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/abstract-factory-2_hu47a6d71e475ef557b8a3ac8f2d1113b5_64812_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="abstract-factory-2">
 &lt;/a>
@@ -149,11 +149,11 @@ style="
 flex-grow: 175;
 flex-basis: 420px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-3.png" data-size="1522x868">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-3.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-3.png" data-size="1522x868">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-3.png"
 width="1522"
 height="868"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-3_hubef6ceeb1539c94bdd7092fdbb16b72f_131834_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/abstract-factory-3_hubef6ceeb1539c94bdd7092fdbb16b72f_131834_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/abstract-factory-3_hubef6ceeb1539c94bdd7092fdbb16b72f_131834_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/abstract-factory-3_hubef6ceeb1539c94bdd7092fdbb16b72f_131834_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="abstract-factory-3">
 &lt;/a>
@@ -396,11 +396,11 @@ style="
 flex-grow: 197;
 flex-basis: 475px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/proxy-1.png" data-size="1540x778">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/proxy-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/proxy-1.png" data-size="1540x778">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/proxy-1.png"
 width="1540"
 height="778"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/proxy-1_hucedf463cecf49ea16cde254ec1f79619_146616_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/proxy-1_hucedf463cecf49ea16cde254ec1f79619_146616_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/proxy-1_hucedf463cecf49ea16cde254ec1f79619_146616_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/proxy-1_hucedf463cecf49ea16cde254ec1f79619_146616_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="proxy">
 &lt;/a>
@@ -456,7 +456,7 @@ alt="proxy">
 &lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">doSomething&lt;/span>&lt;span class="o">();&lt;/span>
 &lt;span class="o">}&lt;/span>
 &lt;span class="o">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>当然，上面说的只是适配器模式的其中一种，也是最简单的一种，无需多言。下面，再介绍**“正统的”**适配器模式。&lt;/p>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>当然，上面说的只是适配器模式的其中一种，也是最简单的一种，无需多言。下面，再介绍 &lt;strong>“正统的”&lt;/strong> 适配器模式。&lt;/p>
 &lt;h4 id="对象适配器模式">对象适配器模式&lt;/h4>
 &lt;p>来看一个《Head First 设计模式》中的一个例子，我稍微修改了一下，看看怎么将鸡适配成鸭，这样鸡也能当鸭来用。因为，现在鸭这个接口，我们没有合适的实现类可以用，所以需要适配器。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">Duck&lt;/span> &lt;span class="o">{&lt;/span>
@@ -510,11 +510,11 @@ style="
 flex-grow: 167;
 flex-basis: 402px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/adapter-1.png" data-size="1522x908">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/adapter-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/adapter-1.png" data-size="1522x908">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/adapter-1.png"
 width="1522"
 height="908"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/adapter-1_hu901ae1845b63c5299dd79771cab4949f_175946_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/adapter-1_hu901ae1845b63c5299dd79771cab4949f_175946_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/adapter-1_hu901ae1845b63c5299dd79771cab4949f_175946_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/adapter-1_hu901ae1845b63c5299dd79771cab4949f_175946_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="adapter-1">
 &lt;/a>
@@ -529,11 +529,11 @@ style="
 flex-grow: 177;
 flex-basis: 425px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/adapter-2.png" data-size="1514x854">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/adapter-2.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/adapter-2.png" data-size="1514x854">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/adapter-2.png"
 width="1514"
 height="854"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/adapter-2_hu6d4980ce0b57a8c6ce3918ed6e666c3a_130440_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/adapter-2_hu6d4980ce0b57a8c6ce3918ed6e666c3a_130440_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/adapter-2_hu6d4980ce0b57a8c6ce3918ed6e666c3a_130440_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/adapter-2_hu6d4980ce0b57a8c6ce3918ed6e666c3a_130440_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="adapter-1">
 &lt;/a>
@@ -559,11 +559,11 @@ style="
 flex-grow: 128;
 flex-basis: 307px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/adapter-5.png" data-size="1470x1148">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/adapter-5.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/adapter-5.png" data-size="1470x1148">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/adapter-5.png"
 width="1470"
 height="1148"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/adapter-5_hu7cd7db0085cc4f745502aed2b950a0e1_276761_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/adapter-5_hu7cd7db0085cc4f745502aed2b950a0e1_276761_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/adapter-5_hu7cd7db0085cc4f745502aed2b950a0e1_276761_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/adapter-5_hu7cd7db0085cc4f745502aed2b950a0e1_276761_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="adapter-5">
 &lt;/a>
@@ -643,11 +643,11 @@ style="
 flex-grow: 133;
 flex-basis: 320px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/bridge-1.png" data-size="1544x1158">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/bridge-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/bridge-1.png" data-size="1544x1158">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/bridge-1.png"
 width="1544"
 height="1158"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="bridge-1">
 &lt;/a>
@@ -667,11 +667,11 @@ style="
 flex-grow: 138;
 flex-basis: 332px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/decorator-1.png" data-size="1546x1116">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/decorator-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/decorator-1.png" data-size="1546x1116">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/decorator-1.png"
 width="1546"
 height="1116"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/decorator-1_hu8fa4e75f0d187ca8d61732ed51e0df47_151275_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/decorator-1_hu8fa4e75f0d187ca8d61732ed51e0df47_151275_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/decorator-1_hu8fa4e75f0d187ca8d61732ed51e0df47_151275_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/decorator-1_hu8fa4e75f0d187ca8d61732ed51e0df47_151275_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="decorator-1">
 &lt;/a>
@@ -681,7 +681,7 @@ alt="decorator-1">
 &lt;blockquote>
 &lt;p>从名字来简单解释下装饰器。既然说是装饰，那么往往就是&lt;strong>添加小功能&lt;/strong>这种，而且，我们要满足可以添加多个小功能。最简单的，代理模式就可以实现功能的增强，但是代理不容易实现多个功能的增强，当然你可以说用代理包装代理的多层包装方式，但是那样的话代码就复杂了。&lt;/p>
 &lt;/blockquote>
-&lt;p>首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们 &lt;strong>ConcreteDecorator&lt;/strong>* 都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent* 的区别是，它们只是装饰者，起**装饰**作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中**加了层皮来装饰**而已。&lt;/p>
+&lt;p>首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们 &lt;strong>ConcreteDecorator&lt;/strong> 都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent* 的区别是，它们只是装饰者，起**装饰**作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中**加了层皮来装饰**而已。&lt;/p>
 &lt;blockquote>
 &lt;p>注意这段话中混杂在各个名词中的 Component 和 Decorator，别搞混了。&lt;/p>
 &lt;/blockquote>
@@ -769,11 +769,11 @@ style="
 flex-grow: 133;
 flex-basis: 320px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/decorator-2.png" data-size="1546x1158">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/decorator-2.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/decorator-2.png" data-size="1546x1158">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/decorator-2.png"
 width="1546"
 height="1158"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/decorator-2_hu399435e78c04075bdd31f194e6f4ea4f_212247_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/decorator-2_hu399435e78c04075bdd31f194e6f4ea4f_212247_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/decorator-2_hu399435e78c04075bdd31f194e6f4ea4f_212247_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/decorator-2_hu399435e78c04075bdd31f194e6f4ea4f_212247_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="decorator-2">
 &lt;/a>
@@ -787,11 +787,11 @@ style="
 flex-grow: 207;
 flex-basis: 496px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/decorator-3.png" data-size="1536x742">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/decorator-3.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/decorator-3.png" data-size="1536x742">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/decorator-3.png"
 width="1536"
 height="742"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/decorator-3_hu5447e4bc721eee6cc4fd34da985efa7a_111915_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/decorator-3_hu5447e4bc721eee6cc4fd34da985efa7a_111915_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/decorator-3_hu5447e4bc721eee6cc4fd34da985efa7a_111915_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/decorator-3_hu5447e4bc721eee6cc4fd34da985efa7a_111915_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="decorator-3">
 &lt;/a>
@@ -958,11 +958,11 @@ style="
 flex-grow: 133;
 flex-basis: 320px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/strategy-1.png" data-size="1544x1156">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/strategy-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/strategy-1.png" data-size="1544x1156">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/strategy-1.png"
 width="1544"
 height="1156"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/strategy-1_hu4f980b16cb336febab0f0171a6c2017a_198439_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/strategy-1_hu4f980b16cb336febab0f0171a6c2017a_198439_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/strategy-1_hu4f980b16cb336febab0f0171a6c2017a_198439_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/strategy-1_hu4f980b16cb336febab0f0171a6c2017a_198439_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="strategy-1">
 &lt;/a>
@@ -975,11 +975,11 @@ style="
 flex-grow: 133;
 flex-basis: 320px"
 >
-&lt;a href="https://mapleafgo.github.io/posts/java/design-pattern/bridge-1.png" data-size="1544x1158">
-&lt;img src="https://mapleafgo.github.io/posts/java/design-pattern/bridge-1.png"
+&lt;a href="https://mapleafgo.github.io/posts/design-pattern/bridge-1.png" data-size="1544x1158">
+&lt;img src="https://mapleafgo.github.io/posts/design-pattern/bridge-1.png"
 width="1544"
 height="1158"
-srcset="https://mapleafgo.github.io/posts/java/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/java/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_1024x0_resize_box_3.png 1024w"
+srcset="https://mapleafgo.github.io/posts/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/design-pattern/bridge-1_hub17419c07ee1c714d880cab7b1b8a771_264511_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="bridge-1">
 &lt;/a>
