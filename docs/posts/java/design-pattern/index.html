@@ -30,7 +30,7 @@ public class FoodFactory { public static Food makeFood(String name) { if (name.e
 创建型模式 创建型模式的作用就是创建对象，说到创建一个对象，最熟悉的就是 new 一个对象，然后 set 相关属性。但是，在很多场景下，我们需要给客户端提供更加友好的创建对象的方式，尤其是那种我们定义了类，但是需要提供给其他开发者用的时候。
 简单工厂模式 和名字一样简单，非常简单，直接上代码吧：
 public class FoodFactory { public static Food makeFood(String name) { if (name.equals(&amp;#34;noodle&amp;#34;)) { Food noodle = new LanZhouNoodle(); noodle.addSpicy(&amp;#34;more&amp;#34;); return noodle; } else if (name.equals(&amp;#34;chicken&amp;#34;)) { Food chicken = new HuangMenChicken(); chicken.addCondiment(&amp;#34;potato&amp;#34;); return chicken; } else { return null; } } } 其中，LanZhouNoodle 和 HuangMenChicken 都继承自 Food。">
-<link rel="shortcut icon" href=favicon.png>
+<link rel="shortcut icon" href=/favicon.png>
 </head>
 <body class=article-page>
 <script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
