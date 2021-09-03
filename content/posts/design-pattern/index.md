@@ -6,6 +6,7 @@ tags:
 categories:
     - 设计模式
     - Java
+toc: true
 ---
 
 > 转载自 [javadoop -- Java设计模式](https://javadoop.com/post/design-pattern)
