@@ -164,9 +164,9 @@ public static void main(String[] args) {
     CPU cpu = cf.makeCPU();
     // 从这个大厂造主板
     MainBoard board = cf.makeMainBoard();
-  	// 从这个大厂造硬盘
-  	HardDisk hardDisk = cf.makeHardDisk();
-  
+    // 从这个大厂造硬盘
+    HardDisk hardDisk = cf.makeHardDisk();
+
     // 将同一个厂子出来的 CPU、主板、硬盘组装在一起
     Computer result = new Computer(cpu, board, hardDisk);
 }
@@ -481,7 +481,7 @@ foodService.makeChicken();
 
 #### 默认适配器模式
 
-首先，我们先看看最简单的适配器模式**默认适配器模式(Default Adapter)**是怎么样的。
+首先，我们先看看最简单的适配器模式 **默认适配器模式(Default Adapter)** 是怎么样的。
 
 我们用 Appache commons-io 包中的 FileAlterationListener 做例子，此接口定义了很多的方法，用于对文件或文件夹进行监控，一旦发生了对应的操作，就会触发相应的方法。
 
@@ -579,22 +579,21 @@ public class WildCock implements Cock {
 ```java
 // 毫无疑问，首先，这个适配器肯定需要 implements Duck，这样才能当做鸭来用
 public class CockAdapter implements Duck {
-  
     Cock cock;
     // 构造方法中需要一个鸡的实例，此类就是将这只鸡适配成鸭来用
-  	public CockAdapter(Cock cock) {
+    public CockAdapter(Cock cock) {
         this.cock = cock;
     }
-  
+
     // 实现鸭的呱呱叫方法
     @Override
-  	public void quack() {
+    public void quack() {
         // 内部其实是一只鸡的咕咕叫
         cock.gobble();
     }
-  
-  	@Override
-  	public void fly() {
+
+    @Override
+    public void fly() {
         cock.fly();
     }
 }
@@ -605,10 +604,10 @@ public class CockAdapter implements Duck {
 ```java
 public static void main(String[] args) {
     // 有一只野鸡
-  	Cock wildCock = new WildCock();
-  	// 成功将野鸡适配成鸭
-  	Duck duck = new CockAdapter(wildCock);
-  	...
+    Cock wildCock = new WildCock();
+    // 成功将野鸡适配成鸭
+    Duck duck = new CockAdapter(wildCock);
+    ...
 }
 ```
 
@@ -652,7 +651,7 @@ public static void main(String[] args) {
 
 ```java
 public interface DrawAPI {
-   public void draw(int radius, int x, int y);
+    public void draw(int radius, int x, int y);
 }
 ```
 
@@ -751,7 +750,7 @@ public static void main(String[] args) {
 
 > 从名字来简单解释下装饰器。既然说是装饰，那么往往就是**添加小功能**这种，而且，我们要满足可以添加多个小功能。最简单的，代理模式就可以实现功能的增强，但是代理不容易实现多个功能的增强，当然你可以说用代理包装代理的多层包装方式，但是那样的话代码就复杂了。
 
-首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们 **ConcreteDecorator** 都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent* 的区别是，它们只是装饰者，起**装饰**作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中**加了层皮来装饰**而已。
+首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们**ConcreteDecorator**都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent 的区别是，它们只是装饰者，起**装饰**作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中**加了层皮来装饰**而已。
 
 > 注意这段话中混杂在各个名词中的 Component 和 Decorator，别搞混了。
 
@@ -767,10 +766,10 @@ public static void main(String[] args) {
 
 ```java
 public abstract class Beverage {
-  	// 返回描述
-  	public abstract String getDescription();
-  	// 返回价格
-  	public abstract double cost();
+    // 返回描述
+    public abstract String getDescription();
+    // 返回价格
+    public abstract double cost();
 }
 ```
 
@@ -778,10 +777,10 @@ public abstract class Beverage {
 
 ```java
 public class BlackTea extends Beverage {
-  	public String getDescription() {
+    public String getDescription() {
         return "红茶";
     }
-  	public double cost() {
+    public double cost() {
         return 10;
     }
 }
@@ -789,19 +788,18 @@ public class GreenTea extends Beverage {
     public String getDescription() {
         return "绿茶";
     }
-  	public double cost() {
+    public double cost() {
         return 11;
     }
 }
-../ 咖啡省略
+...// 咖啡省略
 ```
 
 定义调料，也就是装饰者的基类，此类必须继承自 Beverage：
 
 ```java
 // 调料
-public abstract class Condiment extends Beverage {
-    
+public abstract class Condiment extends Beverage {   
 }
 ```
 
@@ -837,7 +835,7 @@ public class Mango extends Condiment {
         return beverage.cost() + 3; // 加芒果需要 3 元
     }
 }
-../ 给每一种调料都加一个类
+...// 给每一种调料都加一个类
 ```
 
 看客户端调用：
@@ -889,8 +887,10 @@ InputStream inputStream = new LineNumberInputStream(new BufferedInputStream(new 
 
 ```java
 DataInputStream is = new DataInputStream(
-  							new BufferedInputStream(
-                              	new FileInputStream("")));
+                        new BufferedInputStream(
+                            new FileInputStream("")
+                        )
+                    );
 ```
 
 > 所以说嘛，要找到纯的严格符合设计模式的代码还是比较难的。
@@ -930,12 +930,12 @@ public class Rectangle implements Shape {
 ```java
 public static void main(String[] args) {
     // 画一个圆形
-  	Shape circle = new Circle();
-  	circle.draw();
-  
-  	// 画一个长方形
-  	Shape rectangle = new Rectangle();
-  	rectangle.draw();
+    Shape circle = new Circle();
+    circle.draw();
+
+    // 画一个长方形
+    Shape rectangle = new Rectangle();
+    rectangle.draw();
 }
 ```
 
@@ -1106,7 +1106,7 @@ public class Context {
 ```java
 public static void main(String[] args) {
     Context context = new Context(new BluePen()); // 使用绿色笔来画
-  	context.executeDraw(10, 0, 0);
+    context.executeDraw(10, 0, 0);
 }
 ```
 
@@ -1432,15 +1432,17 @@ public class RevertState implements State {
 ```java
 public class Context {
     private State state;
-  	private String name;
-  	public Context(String name) {
+    private String name;
+
+    public Context(String name) {
         this.name = name;
     }
-    
-  	public void setState(State state) {
+
+    public void setState(State state) {
         this.state = state;
     }
-  	public void getState() {
+
+    public void getState() {
         return this.state;
     }
 }
@@ -1454,14 +1456,14 @@ public static void main(String[] args) {
     Context context = new Context("iPhone X");
   	
     // 看看怎么进行补库存操作
-  	State revertState = new RevertState();
-  	revertState.doAction(context);
-  
+    State revertState = new RevertState();
+    revertState.doAction(context);
+
     // 同样的，减库存操作也非常简单
-  	State deductState = new DeductState();
-  	deductState.doAction(context);
-  
-  	// 如果需要我们可以获取当前的状态
+    State deductState = new DeductState();
+    deductState.doAction(context);
+
+    // 如果需要我们可以获取当前的状态
     // context.getState().toString();
 }
 ```

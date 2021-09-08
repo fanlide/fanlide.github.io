@@ -96,19 +96,19 @@ Nginx
 <h3 id=1http-自动跳转-https>1、http 自动跳转 https</h3>
 <p>这里跳转方式，百度就有好多
 下面是腾讯给出的方式，也是大多数采用的方式</p>
-<pre><code>server {
+<pre tabindex=0><code>server {
     listen 80;
     server_name www.domain.com; #填写绑定证书的域名
     rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
 }
 </code></pre><p>这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法</p>
-<pre><code>server {
+<pre tabindex=0><code>server {
     listen 80; #可以省略，默认就是80
     server_name ***; #域名
     return 301 https://$server_name;
 }
 </code></pre><h3 id=2https-请求代理到-http-服务上>2、https 请求代理到 http 服务上</h3>
-<pre><code>location / {
+<pre tabindex=0><code>location / {
     proxy_pass http://xxx; #代理服务地址
     proxy_set_header Host $host; #传输服务器地址
     proxy_set_header X-Real-IP $remote_addr; #传输请求地址

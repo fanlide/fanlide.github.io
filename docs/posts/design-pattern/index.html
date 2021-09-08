@@ -197,9 +197,9 @@ Java
 </span><span class=c1></span>    <span class=n>CPU</span> <span class=n>cpu</span> <span class=o>=</span> <span class=n>cf</span><span class=o>.</span><span class=na>makeCPU</span><span class=o>();</span>
     <span class=c1>// 从这个大厂造主板
 </span><span class=c1></span>    <span class=n>MainBoard</span> <span class=n>board</span> <span class=o>=</span> <span class=n>cf</span><span class=o>.</span><span class=na>makeMainBoard</span><span class=o>();</span>
-  	<span class=c1>// 从这个大厂造硬盘
-</span><span class=c1></span>  	<span class=n>HardDisk</span> <span class=n>hardDisk</span> <span class=o>=</span> <span class=n>cf</span><span class=o>.</span><span class=na>makeHardDisk</span><span class=o>();</span>
-  
+    <span class=c1>// 从这个大厂造硬盘
+</span><span class=c1></span>    <span class=n>HardDisk</span> <span class=n>hardDisk</span> <span class=o>=</span> <span class=n>cf</span><span class=o>.</span><span class=na>makeHardDisk</span><span class=o>();</span>
+
     <span class=c1>// 将同一个厂子出来的 CPU、主板、硬盘组装在一起
 </span><span class=c1></span>    <span class=n>Computer</span> <span class=n>result</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Computer</span><span class=o>(</span><span class=n>cpu</span><span class=o>,</span> <span class=n>board</span><span class=o>,</span> <span class=n>hardDisk</span><span class=o>);</span>
 <span class=o>}</span>
@@ -452,7 +452,7 @@ Java
 <p>适配器模式做的就是，有一个接口需要实现，但是我们现成的对象都不满足，需要加一层适配器来进行适配。</p>
 <p>适配器模式总体来说分三种：默认适配器模式、对象适配器模式、类适配器模式。先不急着分清楚这几个，先看看例子再说。</p>
 <h4 id=默认适配器模式>默认适配器模式</h4>
-<p>首先，我们先看看最简单的适配器模式**默认适配器模式(Default Adapter)**是怎么样的。</p>
+<p>首先，我们先看看最简单的适配器模式 <strong>默认适配器模式(Default Adapter)</strong> 是怎么样的。</p>
 <p>我们用 Appache commons-io 包中的 FileAlterationListener 做例子，此接口定义了很多的方法，用于对文件或文件夹进行监控，一旦发生了对应的操作，就会触发相应的方法。</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>interface</span> <span class=nc>FileAlterationListener</span> <span class=o>{</span>
     <span class=kt>void</span> <span class=nf>onStart</span><span class=o>(</span><span class=kd>final</span> <span class=n>FileAlterationObserver</span> <span class=n>observer</span><span class=o>);</span>
@@ -528,32 +528,31 @@ Java
 </code></pre></div><p>鸭接口有 fly() 和 quare() 两个方法，鸡 Cock 如果要冒充鸭，fly() 方法是现成的，但是鸡不会鸭的呱呱叫，没有 quack() 方法。这个时候就需要适配了：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=c1>// 毫无疑问，首先，这个适配器肯定需要 implements Duck，这样才能当做鸭来用
 </span><span class=c1></span><span class=kd>public</span> <span class=kd>class</span> <span class=nc>CockAdapter</span> <span class=kd>implements</span> <span class=n>Duck</span> <span class=o>{</span>
-  
     <span class=n>Cock</span> <span class=n>cock</span><span class=o>;</span>
     <span class=c1>// 构造方法中需要一个鸡的实例，此类就是将这只鸡适配成鸭来用
-</span><span class=c1></span>  	<span class=kd>public</span> <span class=nf>CockAdapter</span><span class=o>(</span><span class=n>Cock</span> <span class=n>cock</span><span class=o>)</span> <span class=o>{</span>
+</span><span class=c1></span>    <span class=kd>public</span> <span class=nf>CockAdapter</span><span class=o>(</span><span class=n>Cock</span> <span class=n>cock</span><span class=o>)</span> <span class=o>{</span>
         <span class=k>this</span><span class=o>.</span><span class=na>cock</span> <span class=o>=</span> <span class=n>cock</span><span class=o>;</span>
     <span class=o>}</span>
-  
+
     <span class=c1>// 实现鸭的呱呱叫方法
 </span><span class=c1></span>    <span class=nd>@Override</span>
-  	<span class=kd>public</span> <span class=kt>void</span> <span class=nf>quack</span><span class=o>()</span> <span class=o>{</span>
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>quack</span><span class=o>()</span> <span class=o>{</span>
         <span class=c1>// 内部其实是一只鸡的咕咕叫
 </span><span class=c1></span>        <span class=n>cock</span><span class=o>.</span><span class=na>gobble</span><span class=o>();</span>
     <span class=o>}</span>
-  
-  	<span class=nd>@Override</span>
-  	<span class=kd>public</span> <span class=kt>void</span> <span class=nf>fly</span><span class=o>()</span> <span class=o>{</span>
+
+    <span class=nd>@Override</span>
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>fly</span><span class=o>()</span> <span class=o>{</span>
         <span class=n>cock</span><span class=o>.</span><span class=na>fly</span><span class=o>();</span>
     <span class=o>}</span>
 <span class=o>}</span>
 </code></pre></div><p>客户端调用很简单了：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
     <span class=c1>// 有一只野鸡
-</span><span class=c1></span>  	<span class=n>Cock</span> <span class=n>wildCock</span> <span class=o>=</span> <span class=k>new</span> <span class=n>WildCock</span><span class=o>();</span>
-  	<span class=c1>// 成功将野鸡适配成鸭
-</span><span class=c1></span>  	<span class=n>Duck</span> <span class=n>duck</span> <span class=o>=</span> <span class=k>new</span> <span class=n>CockAdapter</span><span class=o>(</span><span class=n>wildCock</span><span class=o>);</span>
-  	<span class=o>...</span>
+</span><span class=c1></span>    <span class=n>Cock</span> <span class=n>wildCock</span> <span class=o>=</span> <span class=k>new</span> <span class=n>WildCock</span><span class=o>();</span>
+    <span class=c1>// 成功将野鸡适配成鸭
+</span><span class=c1></span>    <span class=n>Duck</span> <span class=n>duck</span> <span class=o>=</span> <span class=k>new</span> <span class=n>CockAdapter</span><span class=o>(</span><span class=n>wildCock</span><span class=o>);</span>
+    <span class=o>...</span>
 <span class=o>}</span>
 </code></pre></div><p>到这里，大家也就知道了适配器模式是怎么回事了。无非是我们需要一只鸭，但是我们只有一只鸡，这个时候就需要定义一个适配器，由这个适配器来充当鸭，但是适配器里面的方法还是由鸡来实现的。</p>
 <p>我们用一个图来简单说明下：</p>
@@ -598,7 +597,7 @@ Java
 <p>理解桥梁模式，其实就是理解代码抽象和解耦。</p>
 <p>我们首先需要一个桥梁，它是一个接口，定义提供的接口方法。</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>interface</span> <span class=nc>DrawAPI</span> <span class=o>{</span>
-   <span class=kd>public</span> <span class=kt>void</span> <span class=nf>draw</span><span class=o>(</span><span class=kt>int</span> <span class=n>radius</span><span class=o>,</span> <span class=kt>int</span> <span class=n>x</span><span class=o>,</span> <span class=kt>int</span> <span class=n>y</span><span class=o>);</span>
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>draw</span><span class=o>(</span><span class=kt>int</span> <span class=n>radius</span><span class=o>,</span> <span class=kt>int</span> <span class=n>x</span><span class=o>,</span> <span class=kt>int</span> <span class=n>y</span><span class=o>);</span>
 <span class=o>}</span>
 </code></pre></div><p>然后是一系列实现类：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>RedPen</span> <span class=kd>implements</span> <span class=n>DrawAPI</span> <span class=o>{</span>
@@ -683,7 +682,7 @@ Java
 <blockquote>
 <p>从名字来简单解释下装饰器。既然说是装饰，那么往往就是<strong>添加小功能</strong>这种，而且，我们要满足可以添加多个小功能。最简单的，代理模式就可以实现功能的增强，但是代理不容易实现多个功能的增强，当然你可以说用代理包装代理的多层包装方式，但是那样的话代码就复杂了。</p>
 </blockquote>
-<p>首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们 <strong>ConcreteDecorator</strong> 都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent* 的区别是，它们只是装饰者，起**装饰**作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中**加了层皮来装饰**而已。</p>
+<p>首先明白一些简单的概念，从图中我们看到，所有的具体装饰者们<strong>ConcreteDecorator</strong>都可以作为 Component 来使用，因为它们都实现了 Component 中的所有接口。它们和 Component 实现类 ConcreteComponent 的区别是，它们只是装饰者，起<strong>装饰</strong>作用，也就是即使它们看上去牛逼轰轰，但是它们都只是在具体的实现中<strong>加了层皮来装饰</strong>而已。</p>
 <blockquote>
 <p>注意这段话中混杂在各个名词中的 Component 和 Decorator，别搞混了。</p>
 </blockquote>
@@ -693,17 +692,17 @@ Java
 <p>不说废话了，上代码。</p>
 <p>首先，定义饮料抽象基类：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>abstract</span> <span class=kd>class</span> <span class=nc>Beverage</span> <span class=o>{</span>
-  	<span class=c1>// 返回描述
-</span><span class=c1></span>  	<span class=kd>public</span> <span class=kd>abstract</span> <span class=n>String</span> <span class=nf>getDescription</span><span class=o>();</span>
-  	<span class=c1>// 返回价格
-</span><span class=c1></span>  	<span class=kd>public</span> <span class=kd>abstract</span> <span class=kt>double</span> <span class=nf>cost</span><span class=o>();</span>
+    <span class=c1>// 返回描述
+</span><span class=c1></span>    <span class=kd>public</span> <span class=kd>abstract</span> <span class=n>String</span> <span class=nf>getDescription</span><span class=o>();</span>
+    <span class=c1>// 返回价格
+</span><span class=c1></span>    <span class=kd>public</span> <span class=kd>abstract</span> <span class=kt>double</span> <span class=nf>cost</span><span class=o>();</span>
 <span class=o>}</span>
 </code></pre></div><p>然后是三个基础饮料实现类，红茶、绿茶和咖啡：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>BlackTea</span> <span class=kd>extends</span> <span class=n>Beverage</span> <span class=o>{</span>
-  	<span class=kd>public</span> <span class=n>String</span> <span class=nf>getDescription</span><span class=o>()</span> <span class=o>{</span>
+    <span class=kd>public</span> <span class=n>String</span> <span class=nf>getDescription</span><span class=o>()</span> <span class=o>{</span>
         <span class=k>return</span> <span class=s>&#34;红茶&#34;</span><span class=o>;</span>
     <span class=o>}</span>
-  	<span class=kd>public</span> <span class=kt>double</span> <span class=nf>cost</span><span class=o>()</span> <span class=o>{</span>
+    <span class=kd>public</span> <span class=kt>double</span> <span class=nf>cost</span><span class=o>()</span> <span class=o>{</span>
         <span class=k>return</span> <span class=n>10</span><span class=o>;</span>
     <span class=o>}</span>
 <span class=o>}</span>
@@ -711,15 +710,14 @@ Java
     <span class=kd>public</span> <span class=n>String</span> <span class=nf>getDescription</span><span class=o>()</span> <span class=o>{</span>
         <span class=k>return</span> <span class=s>&#34;绿茶&#34;</span><span class=o>;</span>
     <span class=o>}</span>
-  	<span class=kd>public</span> <span class=kt>double</span> <span class=nf>cost</span><span class=o>()</span> <span class=o>{</span>
+    <span class=kd>public</span> <span class=kt>double</span> <span class=nf>cost</span><span class=o>()</span> <span class=o>{</span>
         <span class=k>return</span> <span class=n>11</span><span class=o>;</span>
     <span class=o>}</span>
 <span class=o>}</span>
-<span class=o>../</span> <span class=n>咖啡省略</span>
-</code></pre></div><p>定义调料，也就是装饰者的基类，此类必须继承自 Beverage：</p>
+<span class=o>...</span><span class=c1>// 咖啡省略
+</span></code></pre></div><p>定义调料，也就是装饰者的基类，此类必须继承自 Beverage：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=c1>// 调料
-</span><span class=c1></span><span class=kd>public</span> <span class=kd>abstract</span> <span class=kd>class</span> <span class=nc>Condiment</span> <span class=kd>extends</span> <span class=n>Beverage</span> <span class=o>{</span>
-    
+</span><span class=c1></span><span class=kd>public</span> <span class=kd>abstract</span> <span class=kd>class</span> <span class=nc>Condiment</span> <span class=kd>extends</span> <span class=n>Beverage</span> <span class=o>{</span>   
 <span class=o>}</span>
 </code></pre></div><p>然后我们来定义柠檬、芒果等具体的调料，它们属于装饰者，毫无疑问，这些调料肯定都需要继承调料 Condiment 类：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Lemon</span> <span class=kd>extends</span> <span class=n>Condiment</span> <span class=o>{</span>
@@ -751,8 +749,8 @@ Java
         <span class=k>return</span> <span class=n>beverage</span><span class=o>.</span><span class=na>cost</span><span class=o>()</span> <span class=o>+</span> <span class=n>3</span><span class=o>;</span> <span class=c1>// 加芒果需要 3 元
 </span><span class=c1></span>    <span class=o>}</span>
 <span class=o>}</span>
-<span class=o>../</span> <span class=n>给每一种调料都加一个类</span>
-</code></pre></div><p>看客户端调用：</p>
+<span class=o>...</span><span class=c1>// 给每一种调料都加一个类
+</span></code></pre></div><p>看客户端调用：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
     <span class=c1>// 首先，我们需要一个基础饮料，红茶、绿茶或咖啡
 </span><span class=c1></span>    <span class=n>Beverage</span> <span class=n>beverage</span> <span class=o>=</span> <span class=k>new</span> <span class=n>GreenTea</span><span class=o>();</span>
@@ -788,8 +786,10 @@ Java
 </code></pre></div><p>这样的结果是，InputStream 还是不具有读取行号的功能，因为读取行号的方法定义在 LineNumberInputStream 类中。</p>
 <p>我们应该像下面这样使用：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=n>DataInputStream</span> <span class=n>is</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DataInputStream</span><span class=o>(</span>
-  							<span class=k>new</span> <span class=n>BufferedInputStream</span><span class=o>(</span>
-                              	<span class=k>new</span> <span class=n>FileInputStream</span><span class=o>(</span><span class=s>&#34;&#34;</span><span class=o>)));</span>
+                        <span class=k>new</span> <span class=n>BufferedInputStream</span><span class=o>(</span>
+                            <span class=k>new</span> <span class=n>FileInputStream</span><span class=o>(</span><span class=s>&#34;&#34;</span><span class=o>)</span>
+                        <span class=o>)</span>
+                    <span class=o>);</span>
 </code></pre></div><blockquote>
 <p>所以说嘛，要找到纯的严格符合设计模式的代码还是比较难的。</p>
 </blockquote>
@@ -816,12 +816,12 @@ Java
 </code></pre></div><p>客户端调用：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
     <span class=c1>// 画一个圆形
-</span><span class=c1></span>  	<span class=n>Shape</span> <span class=n>circle</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Circle</span><span class=o>();</span>
-  	<span class=n>circle</span><span class=o>.</span><span class=na>draw</span><span class=o>();</span>
-  
-  	<span class=c1>// 画一个长方形
-</span><span class=c1></span>  	<span class=n>Shape</span> <span class=n>rectangle</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Rectangle</span><span class=o>();</span>
-  	<span class=n>rectangle</span><span class=o>.</span><span class=na>draw</span><span class=o>();</span>
+</span><span class=c1></span>    <span class=n>Shape</span> <span class=n>circle</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Circle</span><span class=o>();</span>
+    <span class=n>circle</span><span class=o>.</span><span class=na>draw</span><span class=o>();</span>
+
+    <span class=c1>// 画一个长方形
+</span><span class=c1></span>    <span class=n>Shape</span> <span class=n>rectangle</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Rectangle</span><span class=o>();</span>
+    <span class=n>rectangle</span><span class=o>.</span><span class=na>draw</span><span class=o>();</span>
 <span class=o>}</span>
 </code></pre></div><p>以上是我们常写的代码，我们需要画圆就要先实例化圆，画长方形就需要先实例化一个长方形，然后再调用相应的 draw() 方法。</p>
 <p>下面，我们看看怎么用门面模式来让客户端调用更加友好一些。</p>
@@ -945,7 +945,7 @@ Java
 </code></pre></div><p>客户端演示：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
     <span class=n>Context</span> <span class=n>context</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Context</span><span class=o>(</span><span class=k>new</span> <span class=n>BluePen</span><span class=o>());</span> <span class=c1>// 使用绿色笔来画
-</span><span class=c1></span>  	<span class=n>context</span><span class=o>.</span><span class=na>executeDraw</span><span class=o>(</span><span class=n>10</span><span class=o>,</span> <span class=n>0</span><span class=o>,</span> <span class=n>0</span><span class=o>);</span>
+</span><span class=c1></span>    <span class=n>context</span><span class=o>.</span><span class=na>executeDraw</span><span class=o>(</span><span class=n>10</span><span class=o>,</span> <span class=n>0</span><span class=o>,</span> <span class=n>0</span><span class=o>);</span>
 <span class=o>}</span>
 </code></pre></div><p>放到一张图上，让大家看得清晰些：</p>
 <p><figure class=gallery-image style=flex-grow:133;flex-basis:320px>
@@ -1032,7 +1032,7 @@ Java
 </span><span class=c1></span>    <span class=n>subject</span><span class=o>.</span><span class=na>setState</span><span class=o>(</span><span class=n>11</span><span class=o>);</span>
 <span class=o>}</span>
 </code></pre></div><p>output:</p>
-<pre><code>订阅的数据发生变化，新的数据处理为二进制值为：1011
+<pre tabindex=0><code>订阅的数据发生变化，新的数据处理为二进制值为：1011
 订阅的数据发生变化，新的数据处理为十六进制值为：B
 </code></pre><p>当然，jdk 也提供了相似的支持，具体的大家可以参考 java.util.Observable 和 java.util.Observer 这两个类。</p>
 <p>实际生产过程中，观察者模式往往用消息中间件来实现，如果要实现单机观察者模式，笔者建议读者使用 Guava 中的 EventBus，它有同步实现也有异步实现，本文主要介绍设计模式，就不展开说了。</p>
@@ -1189,15 +1189,17 @@ Java
 </code></pre></div><p>前面用到了 context.setState(this)，我们来看看怎么定义 Context 类：</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Context</span> <span class=o>{</span>
     <span class=kd>private</span> <span class=n>State</span> <span class=n>state</span><span class=o>;</span>
-  	<span class=kd>private</span> <span class=n>String</span> <span class=n>name</span><span class=o>;</span>
-  	<span class=kd>public</span> <span class=nf>Context</span><span class=o>(</span><span class=n>String</span> <span class=n>name</span><span class=o>)</span> <span class=o>{</span>
+    <span class=kd>private</span> <span class=n>String</span> <span class=n>name</span><span class=o>;</span>
+
+    <span class=kd>public</span> <span class=nf>Context</span><span class=o>(</span><span class=n>String</span> <span class=n>name</span><span class=o>)</span> <span class=o>{</span>
         <span class=k>this</span><span class=o>.</span><span class=na>name</span> <span class=o>=</span> <span class=n>name</span><span class=o>;</span>
     <span class=o>}</span>
-    
-  	<span class=kd>public</span> <span class=kt>void</span> <span class=nf>setState</span><span class=o>(</span><span class=n>State</span> <span class=n>state</span><span class=o>)</span> <span class=o>{</span>
+
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>setState</span><span class=o>(</span><span class=n>State</span> <span class=n>state</span><span class=o>)</span> <span class=o>{</span>
         <span class=k>this</span><span class=o>.</span><span class=na>state</span> <span class=o>=</span> <span class=n>state</span><span class=o>;</span>
     <span class=o>}</span>
-  	<span class=kd>public</span> <span class=kt>void</span> <span class=nf>getState</span><span class=o>()</span> <span class=o>{</span>
+
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>getState</span><span class=o>()</span> <span class=o>{</span>
         <span class=k>return</span> <span class=k>this</span><span class=o>.</span><span class=na>state</span><span class=o>;</span>
     <span class=o>}</span>
 <span class=o>}</span>
@@ -1207,14 +1209,14 @@ Java
 </span><span class=c1></span>    <span class=n>Context</span> <span class=n>context</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Context</span><span class=o>(</span><span class=s>&#34;iPhone X&#34;</span><span class=o>);</span>
   	
     <span class=c1>// 看看怎么进行补库存操作
-</span><span class=c1></span>  	<span class=n>State</span> <span class=n>revertState</span> <span class=o>=</span> <span class=k>new</span> <span class=n>RevertState</span><span class=o>();</span>
-  	<span class=n>revertState</span><span class=o>.</span><span class=na>doAction</span><span class=o>(</span><span class=n>context</span><span class=o>);</span>
-  
+</span><span class=c1></span>    <span class=n>State</span> <span class=n>revertState</span> <span class=o>=</span> <span class=k>new</span> <span class=n>RevertState</span><span class=o>();</span>
+    <span class=n>revertState</span><span class=o>.</span><span class=na>doAction</span><span class=o>(</span><span class=n>context</span><span class=o>);</span>
+
     <span class=c1>// 同样的，减库存操作也非常简单
-</span><span class=c1></span>  	<span class=n>State</span> <span class=n>deductState</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DeductState</span><span class=o>();</span>
-  	<span class=n>deductState</span><span class=o>.</span><span class=na>doAction</span><span class=o>(</span><span class=n>context</span><span class=o>);</span>
-  
-  	<span class=c1>// 如果需要我们可以获取当前的状态
+</span><span class=c1></span>    <span class=n>State</span> <span class=n>deductState</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DeductState</span><span class=o>();</span>
+    <span class=n>deductState</span><span class=o>.</span><span class=na>doAction</span><span class=o>(</span><span class=n>context</span><span class=o>);</span>
+
+    <span class=c1>// 如果需要我们可以获取当前的状态
 </span><span class=c1></span>    <span class=c1>// context.getState().toString();
 </span><span class=c1></span><span class=o>}</span>
 </code></pre></div><p>读者可能会发现，在上面这个例子中，如果我们不关心当前 context 处于什么状态，那么 Context 就可以不用维护 state 属性了，那样代码会简单很多。</p>
