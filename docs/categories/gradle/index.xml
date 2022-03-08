@@ -1,12 +1,50 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gradle on 慕枫的leaf</title><link>https://mapleafgo.github.io/categories/gradle/</link><description>Recent content in Gradle on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 21 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/categories/gradle/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Gradle发布到Maven中央仓库</title><link>https://mapleafgo.github.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/gradle/maven-publish/</guid><description>注册https://issues.sonatype.org/账号
-使用 scoop 安装 gpgscoop install gpg
-使用 gpg 生成密钥对
-gpg --full-generate-key
-导出私钥
-gpg --export-secret-keys -o secring.gpg
-发布到 ubuntu 密钥库
-gpg --keyserver keyserver.ubuntu.com --send-keys ***********
-gpg --full-generate-key
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gradle on 慕枫的leaf</title><link>https://mapleafgo.github.io/categories/gradle/</link><description>Recent content in Gradle on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 21 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/categories/gradle/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Gradle发布到Maven中央仓库</title><link>https://mapleafgo.github.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/gradle/maven-publish/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>注册&lt;code>https://issues.sonatype.org/&lt;/code>账号&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用 scoop 安装 gpg&lt;code>scoop install gpg&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用 gpg 生成密钥对&lt;/p>
+&lt;p>&lt;code>gpg --full-generate-key&lt;/code>&lt;/p>
+&lt;p>导出私钥&lt;/p>
+&lt;p>&lt;code>gpg --export-secret-keys -o secring.gpg&lt;/code>&lt;/p>
+&lt;p>发布到 ubuntu 密钥库&lt;/p>
+&lt;p>&lt;code>gpg --keyserver keyserver.ubuntu.com --send-keys ***********&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback"> gpg --full-generate-key
 gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -30,4 +68,11 @@ GnuPG 需要构建用户标识以辨认您的密钥。
 电子邮件地址：
 注释：
 最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
-配置 gradle 文件，这个看官方文档吧</description></item></channel></rss>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>配置 gradle 文件，这个看&lt;a class="link" href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener"
+>官方文档&lt;/a>吧&lt;/p>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>

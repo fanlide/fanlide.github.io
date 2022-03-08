@@ -4,6 +4,12 @@ description: "慕枫Go博客介绍"
 date: 2021-04-28
 author: "Mapleafgo"
 license: "CC BY-NC-ND"
+menu:
+    main: 
+        name: 关于
+        weight: -90
+        params:
+            icon: user
 ---
 
 关于名字，听着有点默默忧愁感哈。因为本人比较喜欢自然风景，尤其如晚霞一样的枫叶林，所以取了个“慕枫”。名字后缀的“Go”是为了增加点积极向上的精神，也是为了迎合英文名

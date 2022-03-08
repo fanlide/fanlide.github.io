@@ -1,19 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on 慕枫的leaf</title><link>https://mapleafgo.github.io/tags/nginx/</link><description>Recent content in Nginx on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 30 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>记一次 nginx 代理问题</title><link>https://mapleafgo.github.io/posts/nginx/proxy/</link><pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/nginx/proxy/</guid><description>最终实现效果： 配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。
-遇到的问题与解决方式： 1、http 自动跳转 https 这里跳转方式，百度就有好多 下面是腾讯给出的方式，也是大多数采用的方式
-server {
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on 慕枫的leaf</title><link>https://mapleafgo.github.io/tags/nginx/</link><description>Recent content in Nginx on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 30 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>记一次 nginx 代理问题</title><link>https://mapleafgo.github.io/posts/nginx/proxy/</link><pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/nginx/proxy/</guid><description>&lt;img src="https://mapleafgo.github.io/posts/nginx/proxy/4DC29ACB-678C-4221-AFF1-728A6AB2C449.png" alt="Featured image of post 记一次 nginx 代理问题" />&lt;h2 id="最终实现效果">最终实现效果：&lt;/h2>
+&lt;p>配置 ssl 证书，http 自动跳转 https。所有 https 请求代理到另外的 http 服务上。&lt;/p>
+&lt;h2 id="遇到的问题与解决方式">遇到的问题与解决方式：&lt;/h2>
+&lt;h3 id="1http-自动跳转-https">1、http 自动跳转 https&lt;/h3>
+&lt;p>这里跳转方式，百度就有好多
+下面是腾讯给出的方式，也是大多数采用的方式&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">server {
 listen 80;
 server_name www.domain.com; #填写绑定证书的域名
 rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
 }
-这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法
-server {
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">server {
 listen 80; #可以省略，默认就是80
 server_name ***; #域名
 return 301 https://$server_name;
 }
-2、https 请求代理到 http 服务上 location / {
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2https-请求代理到-http-服务上">2、https 请求代理到 http 服务上&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">location / {
 proxy_pass http://xxx; #代理服务地址
 proxy_set_header Host $host; #传输服务器地址
 proxy_set_header X-Real-IP $remote_addr; #传输请求地址
 proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）
-}</description></item></channel></rss>
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
