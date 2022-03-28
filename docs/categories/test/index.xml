@@ -40,13 +40,13 @@
 &lt;/span>&lt;span class="lnt">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-groovy" data-lang="groovy">&lt;span class="c1">// 获取请求参数
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">params&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sampler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getArguments&lt;/span>&lt;span class="o">();&lt;/span>
-&lt;span class="c1">// 获取第一个参数，这里排序跟请求节点的参数顺序挂钩
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">kw&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">params&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getArgument&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;span class="c1">// 赋予kw新值
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">kw&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setValue&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;success&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-groovy" data-lang="groovy">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 获取请求参数
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">params&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sampler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getArguments&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 获取第一个参数，这里排序跟请求节点的参数顺序挂钩
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">kw&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">params&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getArgument&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 赋予kw新值
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">kw&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setValue&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;success&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;li>
@@ -84,17 +84,17 @@
 &lt;/span>&lt;span class="lnt">10
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-groovy" data-lang="groovy">&lt;span class="kn">import&lt;/span> &lt;span class="nn">groovy.json.JsonOutput&lt;/span>&lt;span class="o">;&lt;/span>
-&lt;span class="kn">import&lt;/span> &lt;span class="nn">org.apache.commons.lang3.StringEscapeUtils&lt;/span>&lt;span class="o">;&lt;/span>
-&lt;span class="c1">// 字符串的形式读取返回数据
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">data&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">prev&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getResponseDataAsString&lt;/span>&lt;span class="o">();&lt;/span>
-&lt;span class="c1">// 格式化json数据
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">json&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">JsonOutput&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">prettyPrint&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;span class="c1">// 对数据进行Unicode转中文的解码
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">ret&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">StringEscapeUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">unescapeJava&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">json&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;span class="c1">// 把我们转换后的数据设置为返回结果，编码设置为UTF-8
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">prev&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setResponseData&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ret&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s2">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-groovy" data-lang="groovy">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">groovy.json.JsonOutput&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">org.apache.commons.lang3.StringEscapeUtils&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 字符串的形式读取返回数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">data&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">prev&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getResponseDataAsString&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 格式化json数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">json&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">JsonOutput&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">prettyPrint&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 对数据进行Unicode转中文的解码
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">def&lt;/span> &lt;span class="n">ret&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">StringEscapeUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">unescapeJava&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">json&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 把我们转换后的数据设置为返回结果，编码设置为UTF-8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">prev&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setResponseData&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ret&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s2">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;li>

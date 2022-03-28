@@ -38,7 +38,7 @@ params:
 
     footer:
         since: 2020
-        customText: <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">蜀ICP备18005860号-1</a>
+        customText: <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">蜀ICP备18005860号</a>
 
     dateFormat:
         published: 2006-01-02

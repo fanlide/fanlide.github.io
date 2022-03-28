@@ -44,31 +44,35 @@
 &lt;/span>&lt;span class="lnt">28
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback"> gpg --full-generate-key
-gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-请选择您要使用的密钥类型：
-(1) RSA 和 RSA （默认）
-(2) DSA 和 Elgamal
-(3) DSA（仅用于签名）
-(4) RSA（仅用于签名）
-RSA 密钥的长度应在 1024 位与 4096 位之间。
-您想要使用的密钥长度？(2048)
-请设定这个密钥的有效期限。
-0 = 密钥永不过期
-&amp;lt;n&amp;gt; = 密钥在 n 天后过期
-&amp;lt;n&amp;gt;w = 密钥在 n 周后过期
-&amp;lt;n&amp;gt;m = 密钥在 n 月后过期
-&amp;lt;n&amp;gt;y = 密钥在 n 年后过期
-密钥永远不会过期
-这些内容正确吗？ (y/N) y
-GnuPG 需要构建用户标识以辨认您的密钥。
-真实姓名：
-电子邮件地址：
-注释：
-最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"> gpg --full-generate-key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> This is free software: you are free to change and redistribute it.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> There is NO WARRANTY, to the extent permitted by law.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 请选择您要使用的密钥类型：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (1) RSA 和 RSA （默认）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (2) DSA 和 Elgamal
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (3) DSA（仅用于签名）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (4) RSA（仅用于签名）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> RSA 密钥的长度应在 1024 位与 4096 位之间。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 您想要使用的密钥长度？(2048)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 请设定这个密钥的有效期限。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0 = 密钥永不过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt; = 密钥在 n 天后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt;w = 密钥在 n 周后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt;m = 密钥在 n 月后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt;y = 密钥在 n 年后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 密钥永远不会过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 这些内容正确吗？ (y/N) y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> GnuPG 需要构建用户标识以辨认您的密钥。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 真实姓名：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 电子邮件地址：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 注释：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;li>

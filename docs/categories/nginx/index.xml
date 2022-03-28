@@ -13,12 +13,12 @@
 &lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">server {
-listen 80;
-server_name www.domain.com; #填写绑定证书的域名
-rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">server {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 80;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.domain.com; #填写绑定证书的域名
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>这种方式，我感觉不太直观。于是我使用的是下面这种使用 301 重定向的方法&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -30,12 +30,12 @@ rewrite ^(.*)$ https://$host$1 permanent; #把http的域名请求转成https
 &lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">server {
-listen 80; #可以省略，默认就是80
-server_name ***; #域名
-return 301 https://$server_name;
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">server {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 80; #可以省略，默认就是80
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name ***; #域名
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return 301 https://$server_name;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="2https-请求代理到-http-服务上">2、https 请求代理到 http 服务上&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -48,12 +48,12 @@ return 301 https://$server_name;
 &lt;/span>&lt;span class="lnt">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">location / {
-proxy_pass http://xxx; #代理服务地址
-proxy_set_header Host $host; #传输服务器地址
-proxy_set_header X-Real-IP $remote_addr; #传输请求地址
-proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">location / {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_pass http://xxx; #代理服务地址
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header Host $host; #传输服务器地址
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Real-IP $remote_addr; #传输请求地址
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Forwarded-Proto $scheme; #传递传输协议（主要就是这个指令）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item></channel></rss>
