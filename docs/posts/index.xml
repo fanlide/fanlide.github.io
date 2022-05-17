@@ -1,4 +1,102 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 慕枫的leaf</title><link>https://mapleafgo.github.io/posts/</link><description>Recent content in Posts on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 27 Aug 2021 10:41:52 +0800</lastBuildDate><atom:link href="https://mapleafgo.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>设计模式也可以这么简单</title><link>https://mapleafgo.github.io/posts/design-pattern/</link><pubDate>Fri, 27 Aug 2021 10:41:52 +0800</pubDate><guid>https://mapleafgo.github.io/posts/design-pattern/</guid><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 慕枫的leaf</title><link>https://mapleafgo.github.io/posts/</link><description>Recent content in Posts on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 17 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>adb wifi 连接调试</title><link>https://mapleafgo.github.io/posts/android/android-adb-wifi/</link><pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/android/android-adb-wifi/</guid><description>&lt;p>最近用adb进行调试时遇到了连不上的问题，之前的设备只需要执行&lt;code>adb connect [ip:host]&lt;/code>就能直接连上，今天各种试都不行，查百度也不行。&lt;/p>
+&lt;p>于是我想可能是我的设备android版本是12的原因，最后google了下终于找到了&lt;a class="link" href="https://developer.android.com/studio/command-line/adb" target="_blank" rel="noopener"
+>官方教程&lt;/a>&lt;/p>
+&lt;p>总结一下官方连接教程如下:&lt;/p>
+&lt;h2 id="android-版本-11-及其以上">android 版本 11 及其以上&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>开启 wifi 调试&lt;/p>
+&lt;p>首先在 11 及以上版本中，开启 wifi 调试只需在设置的 &lt;strong>开发者选项&lt;/strong> 里就能直接打开，在开发者选项里开启 &lt;strong>无线调试&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用配对码配对设备&lt;/p>
+&lt;p>开启 wifi 调试后，这里在设备上点进 &lt;strong>无线调试&lt;/strong> 如图:&lt;/p>
+&lt;p>&lt;img src="https://mapleafgo.github.io/posts/android/android-adb-wifi/1.jpg"
+width="1080"
+height="2400"
+srcset="https://mapleafgo.github.io/posts/android/android-adb-wifi/1_hu808986eb18f92af7fb86059bf773a161_209909_480x0_resize_q75_box.jpg 480w, https://mapleafgo.github.io/posts/android/android-adb-wifi/1_hu808986eb18f92af7fb86059bf773a161_209909_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="无线调试配置"
+class="gallery-image"
+data-flex-grow="45"
+data-flex-basis="108px"
+>&lt;/p>
+&lt;p>点击 &lt;strong>使用配对码配对设备&lt;/strong> ，这里会弹出配对码和配对的地址。使用如下命令进行授权配对&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">adb pair &lt;span class="o">[&lt;/span>ip:host&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这里回车后会让你输入配对码，看到 &lt;code>Successfully paired&lt;/code> ，就是授权成功了&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>adb wifi 连接&lt;/p>
+&lt;p>在完成上面的配对后，就可以直接进行连接了。连接的地址与端口，在无线调试页面有显示&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">adb connect &lt;span class="o">[&lt;/span>ip:host&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>检查连接设备情况&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">adb devices -l
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>执行命令可以查看当前所有连接的设备，不出意外就可以看到咱们刚连接上的设备了&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="android-版本-10-及其以下">android 版本 10 及其以下&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>开启 wifi 调试&lt;/p>
+&lt;p>这个版本没有系统的开启方法，官方给出的是先用USB连接adb执行以下命令&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">adb tcpip &lt;span class="m">5555&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>adb wifi 连接&lt;/p>
+&lt;p>设备开启 wifi 调试后，之后就可以拔掉数据线，进行 wifi 调试了 &lt;em>(系统重启后需要重新执行开启步骤)&lt;/em> ， wifi 调试连接命令如下:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">adb connect &lt;span class="o">[&lt;/span>ip:host&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这里 ip 和 host 得是需连接设备的 ip 与端口号，端口号就是上个步骤指定的 &lt;code>5555&lt;/code> 端口&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>检查连接设备情况&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">adb devices -l
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>执行命令可以查看当前所有连接的设备，不出意外就可以看到咱们刚连接上的设备了&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>设计模式也可以这么简单</title><link>https://mapleafgo.github.io/posts/design-pattern/</link><pubDate>Fri, 27 Aug 2021 10:41:52 +0800</pubDate><guid>https://mapleafgo.github.io/posts/design-pattern/</guid><description>&lt;blockquote>
 &lt;p>转载自 &lt;a class="link" href="https://javadoop.com/post/design-pattern" target="_blank" rel="noopener"
 >javadoop &amp;ndash; Java设计模式&lt;/a>&lt;/p>
 &lt;/blockquote>
