@@ -1,25 +1,51 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on 慕枫的leaf</title><link>https://mapleafgo.github.io/categories/linux/</link><description>Recent content in Linux on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Deepin配置使用ibus输入引擎</title><link>https://mapleafgo.github.io/posts/linux/install_ibus/</link><pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/linux/install_ibus/</guid><description>&lt;img src="https://mapleafgo.github.io/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png" alt="Featured image of post Deepin配置使用ibus输入引擎" />&lt;h3 id="1安装">1、安装&lt;/h3>
-&lt;p>&lt;code>sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4&lt;/code>&lt;/p>
-&lt;h3 id="2使用-im-config-切换输入法引擎">2、使用 im-config 切换输入法引擎&lt;/h3>
-&lt;p>&lt;img src="https://mapleafgo.github.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png"
-width="1086"
-height="557"
-srcset="https://mapleafgo.github.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu4fda1713f06cf546ad8a3fbdd43b8b0c_101248_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-class="gallery-image"
-data-flex-grow="194"
-data-flex-basis="467px"
->&lt;/p>
-&lt;p>直接一路确定、yes&lt;/p>
-&lt;p>&lt;img src="https://mapleafgo.github.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png"
-width="1086"
-height="557"
-srcset="https://mapleafgo.github.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_480x0_resize_box_3.png 480w, https://mapleafgo.github.io/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8b6d21a0dfcad6b914799609cb6b27bd_109857_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-class="gallery-image"
-data-flex-grow="194"
-data-flex-basis="467px"
->&lt;/p>
-&lt;p>到这一步选择 ibus，再一路确定。就搞定了&lt;/p>
-&lt;h3 id="常见问题">常见问题：&lt;/h3>
-&lt;p>旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到&lt;code>/usr/share/im-config/data/&lt;/code>目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Linux on 慕枫的leaf</title>
+        <link>http://localhost:1313/categories/linux/</link>
+        <description>Recent content in Linux on 慕枫的leaf</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>慕枫</copyright>
+        <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Deepin配置使用ibus输入引擎</title>
+        <link>http://localhost:1313/posts/linux/install_ibus/</link>
+        <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/posts/linux/install_ibus/</guid>
+        <description>&lt;img src="http://localhost:1313/posts/linux/install_ibus/D736D06C-7B39-4813-A96D-027E2A5F8D2D.png" alt="Featured image of post Deepin配置使用ibus输入引擎" /&gt;&lt;h3 id=&#34;1安装&#34;&gt;1、安装
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;sudo apt install -y ibus ibus-gtk ibus-gtk3 ibus-qt4&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2使用-im-config-切换输入法引擎&#34;&gt;2、使用 im-config 切换输入法引擎
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4.png&#34;
+	width=&#34;1086&#34;
+	height=&#34;557&#34;
+	srcset=&#34;http://localhost:1313/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu11267401714580170078.png 480w, http://localhost:1313/posts/linux/install_ibus/810DAEA8-E19F-4186-A9BE-0BA8FC6792A4_hu5984764086862442013.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;467px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;直接一路确定、yes&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601.png&#34;
+	width=&#34;1086&#34;
+	height=&#34;557&#34;
+	srcset=&#34;http://localhost:1313/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu1922163122108971443.png 480w, http://localhost:1313/posts/linux/install_ibus/2C8C3069-1C1F-430E-9C47-71D1399D6601_hu8086688541406285619.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;467px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;到这一步选择 ibus，再一路确定。就搞定了&lt;/p&gt;
+&lt;h3 id=&#34;常见问题&#34;&gt;常见问题：
+&lt;/h3&gt;&lt;p&gt;旧版本 im-config 因为存在两个 ibus 配置文件，所以 ibus 读取不到。可到&lt;code&gt;/usr/share/im-config/data/&lt;/code&gt;目录下删除 23_ibus 的两个文件。再次启动 im-config 就可以了&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
