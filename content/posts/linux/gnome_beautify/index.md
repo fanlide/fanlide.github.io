@@ -1,6 +1,6 @@
 ---
 title: "EndeavourOS Gnome 美化"
-description:
+description: EndeavourOS 的 Gnome 安装完成后的一些初始化工作
 date: 2024-12-04T10:10:32+08:00
 image: A51AE26F-8089-4E33-8107-1E0EBEC3A0DE.png
 license:
