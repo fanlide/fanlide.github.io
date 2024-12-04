@@ -1,102 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Gradle on 慕枫的leaf</title>
-        <link>http://localhost:1313/categories/gradle/</link>
-        <description>Recent content in Gradle on 慕枫的leaf</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
-        <copyright>慕枫</copyright>
-        <lastBuildDate>Sat, 21 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/gradle/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>使用Gradle发布到Maven中央仓库</title>
-        <link>http://localhost:1313/posts/gradle/maven-publish/</link>
-        <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/posts/gradle/maven-publish/</guid>
-        <description>&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;注册&lt;code&gt;https://issues.sonatype.org/&lt;/code&gt;账号&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;使用 scoop 安装 gpg&lt;code&gt;scoop install gpg&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;使用 gpg 生成密钥对&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;gpg --full-generate-key&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;导出私钥&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;gpg --export-secret-keys -o secring.gpg&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;发布到 ubuntu 密钥库&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;gpg --keyserver keyserver.ubuntu.com --send-keys ***********&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   gpg --full-generate-key
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   This is free software: you are free to change and redistribute it.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   There is NO WARRANTY, to the extent permitted by law.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   请选择您要使用的密钥类型：
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      (1) RSA 和 RSA （默认）
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      (2) DSA 和 Elgamal
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      (3) DSA（仅用于签名）
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      (4) RSA（仅用于签名）
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   RSA 密钥的长度应在 1024 位与 4096 位之间。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   您想要使用的密钥长度？(2048)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   请设定这个密钥的有效期限。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            0 = 密钥永不过期
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &amp;lt;n&amp;gt;  = 密钥在 n 天后过期
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &amp;lt;n&amp;gt;w = 密钥在 n 周后过期
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &amp;lt;n&amp;gt;m = 密钥在 n 月后过期
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &amp;lt;n&amp;gt;y = 密钥在 n 年后过期
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   密钥永远不会过期
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   这些内容正确吗？ (y/N) y
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   GnuPG 需要构建用户标识以辨认您的密钥。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   真实姓名：
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   电子邮件地址：
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   注释：
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;配置 gradle 文件，这个看&lt;a class=&#34;link&#34; href=&#34;https://docs.gradle.org/current/userguide/publishing_maven.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官方文档&lt;/a&gt;吧&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gradle on 慕枫的leaf</title><link>https://mapleafgo.github.io/categories/gradle/</link><description>Recent content in Gradle on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>慕枫</copyright><lastBuildDate>Sat, 21 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mapleafgo.github.io/categories/gradle/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Gradle发布到Maven中央仓库</title><link>https://mapleafgo.github.io/posts/gradle/maven-publish/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>https://mapleafgo.github.io/posts/gradle/maven-publish/</guid><description>&lt;ol>
+&lt;li>
+&lt;p>注册&lt;code>https://issues.sonatype.org/&lt;/code>账号&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用 scoop 安装 gpg&lt;code>scoop install gpg&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>使用 gpg 生成密钥对&lt;/p>
+&lt;p>&lt;code>gpg --full-generate-key&lt;/code>&lt;/p>
+&lt;p>导出私钥&lt;/p>
+&lt;p>&lt;code>gpg --export-secret-keys -o secring.gpg&lt;/code>&lt;/p>
+&lt;p>发布到 ubuntu 密钥库&lt;/p>
+&lt;p>&lt;code>gpg --keyserver keyserver.ubuntu.com --send-keys ***********&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"> gpg --full-generate-key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> This is free software: you are free to change and redistribute it.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> There is NO WARRANTY, to the extent permitted by law.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 请选择您要使用的密钥类型：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (1) RSA 和 RSA （默认）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (2) DSA 和 Elgamal
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (3) DSA（仅用于签名）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> (4) RSA（仅用于签名）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> RSA 密钥的长度应在 1024 位与 4096 位之间。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 您想要使用的密钥长度？(2048)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 请设定这个密钥的有效期限。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0 = 密钥永不过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt; = 密钥在 n 天后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt;w = 密钥在 n 周后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt;m = 密钥在 n 月后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;lt;n&amp;gt;y = 密钥在 n 年后过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 密钥永远不会过期
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 这些内容正确吗？ (y/N) y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> GnuPG 需要构建用户标识以辨认您的密钥。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 真实姓名：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 电子邮件地址：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 注释：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 最后重复两次输入Passphase（这个在发布的时候需要，相当于密钥密码）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>配置 gradle 文件，这个看&lt;a class="link" href="https://docs.gradle.org/current/userguide/publishing_maven.html" target="_blank" rel="noopener"
+>官方文档&lt;/a>吧&lt;/p>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>
