@@ -13,7 +13,7 @@ categories:
 
 ## 简介
 
-普天同庆！微信终于发布 Linux 版本了！之前日常使用 Linux 环境，总是会使用一
+普天同庆！微信终于发布 Linux 版本了！之前日常使用 Linux 环境，总是会使用一段
 时间就弃坑，还是生态问题无法与其他系统比。现在由于信创，各家大厂都在积极适配 Linux ，我又决定拿起来试试。
 
 ## 系统安装
@@ -104,7 +104,7 @@ yay -S wl-clipboard
 
 ### QT 样式
 
-在 GNOME 下 QT 默认样式特别丑，就拿 fcitx5 的配置应用来说，就丑哭了那种，一度让我想放弃它。直到我看到了这篇文章 [Uniform look for Qt and GTK applications](https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications)
+在 GNOME 下 QT 默认样式特别丑，就拿 fcitx5 的配置应用来说，就丑哭了的那种，一度让我想放弃它。直到我看到了这篇文章 [Uniform look for Qt and GTK applications](https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications)
 
 按这篇文章里讲的这些方案，我挨个试下来，最终得到如下的效果
 
@@ -164,7 +164,7 @@ yay -S wl-clipboard
 
     QT5 应用现在还是比较少了，那些包安装又麻烦，我就懒得折腾了。
 
-    但是有些是依赖系统 `python-pyqt5` 展示的应用，但它们内部其实是做了兼容处理，优先使用 `python-pyqt6`。所以我们可以安装个 `python-pyqt6`
+    但是有些依赖系统 `python-pyqt5` 展示的应用，它们很多内部其实是做了兼容处理，优先使用 `python-pyqt6`。所以我们可以安装个 `python-pyqt6`
 
     ```bash
     yay -S python-pyqt6

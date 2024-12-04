@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>慕枫的leaf</title><link>https://mapleafgo.github.io/</link><description>Recent content on 慕枫的leaf</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>慕枫</copyright><lastBuildDate>Wed, 04 Dec 2024 10:10:32 +0800</lastBuildDate><atom:link href="https://mapleafgo.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>EndeavourOS Gnome 美化</title><link>https://mapleafgo.github.io/posts/linux/gnome_beautify/</link><pubDate>Wed, 04 Dec 2024 10:10:32 +0800</pubDate><guid>https://mapleafgo.github.io/posts/linux/gnome_beautify/</guid><description>&lt;img src="https://mapleafgo.github.io/posts/linux/gnome_beautify/A51AE26F-8089-4E33-8107-1E0EBEC3A0DE.png" alt="Featured image of post EndeavourOS Gnome 美化" />&lt;h2 id="简介">简介
-&lt;/h2>&lt;p>普天同庆！微信终于发布 Linux 版本了！之前日常使用 Linux 环境，总是会使用一
+&lt;/h2>&lt;p>普天同庆！微信终于发布 Linux 版本了！之前日常使用 Linux 环境，总是会使用一段
 时间就弃坑，还是生态问题无法与其他系统比。现在由于信创，各家大厂都在积极适配 Linux ，我又决定拿起来试试。&lt;/p>
 &lt;h2 id="系统安装">系统安装
 &lt;/h2>&lt;p>&lt;del>在系统选择上，我的第一选择当然还是 Deepin ，算是国产之光了，现在已经是更新到 23 了&lt;/del>&lt;/p>
@@ -125,7 +125,7 @@
 &lt;/ol>
 &lt;p>到这里，中文输入法的问题解决了&lt;/p>
 &lt;h3 id="qt-样式">QT 样式
-&lt;/h3>&lt;p>在 GNOME 下 QT 默认样式特别丑，就拿 fcitx5 的配置应用来说，就丑哭了那种，一度让我想放弃它。直到我看到了这篇文章 &lt;a class="link" href="https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications" target="_blank" rel="noopener"
+&lt;/h3>&lt;p>在 GNOME 下 QT 默认样式特别丑，就拿 fcitx5 的配置应用来说，就丑哭了的那种，一度让我想放弃它。直到我看到了这篇文章 &lt;a class="link" href="https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications" target="_blank" rel="noopener"
 >Uniform look for Qt and GTK applications&lt;/a>&lt;/p>
 &lt;p>按这篇文章里讲的这些方案，我挨个试下来，最终得到如下的效果&lt;/p>
 &lt;p>&lt;img src="https://mapleafgo.github.io/posts/linux/gnome_beautify/7172570E-6FCD-45DA-9991-91E74CB0DF90.png"
@@ -240,7 +240,7 @@ data-flex-basis="209px"
 &lt;li>
 &lt;p>关于 QT5 应用&lt;/p>
 &lt;p>QT5 应用现在还是比较少了，那些包安装又麻烦，我就懒得折腾了。&lt;/p>
-&lt;p>但是有些是依赖系统 &lt;code>python-pyqt5&lt;/code> 展示的应用，但它们内部其实是做了兼容处理，优先使用 &lt;code>python-pyqt6&lt;/code>。所以我们可以安装个 &lt;code>python-pyqt6&lt;/code>&lt;/p>
+&lt;p>但是有些依赖系统 &lt;code>python-pyqt5&lt;/code> 展示的应用，它们很多内部其实是做了兼容处理，优先使用 &lt;code>python-pyqt6&lt;/code>。所以我们可以安装个 &lt;code>python-pyqt6&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
