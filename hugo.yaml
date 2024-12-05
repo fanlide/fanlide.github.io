@@ -70,7 +70,7 @@ params:
         provider: vssue
 
         vssue:
-            autoCreateIssue: true
+            autoCreateIssue: false
             platform: github
             owner: mapleafgo
             repo: mapleafgo.github.io
