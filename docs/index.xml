@@ -103,6 +103,15 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install ungoogled-chromium
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
+&lt;/div>&lt;h3 id="创建链接">创建链接
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo ln -s /usr/bin/ungoogled-chromium /usr/bin/chromium
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
 &lt;/div>&lt;h3 id="设置默认全屏启动页面">设置默认全屏启动页面
 &lt;/h3>&lt;p>编辑 &lt;code>~/.config/i3/config&lt;/code>，添加如下行：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -110,10 +119,12 @@
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> --no-startup-id ungoogled-chromium --kiosk --disable-extensions --disable-translate --app&lt;span class="o">=&lt;/span>&amp;lt;your_url&amp;gt;
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> --no-startup-id chromium --kiosk --disable-extensions --disable-translate --app&lt;span class="o">=&lt;/span>&amp;lt;your_url&amp;gt;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>EndeavourOS Gnome 美化</title><link>https://mapleafgo.github.io/posts/linux/gnome_beautify/</link><pubDate>Wed, 04 Dec 2024 10:10:32 +0800</pubDate><guid>https://mapleafgo.github.io/posts/linux/gnome_beautify/</guid><description>&lt;img src="https://mapleafgo.github.io/posts/linux/gnome_beautify/A51AE26F-8089-4E33-8107-1E0EBEC3A0DE.png" alt="Featured image of post EndeavourOS Gnome 美化" />&lt;h2 id="简介">简介
+&lt;/div>&lt;ul>
+&lt;li>&amp;lt;your_url&amp;gt;: 你的初始跳转页面&lt;/li>
+&lt;/ul></description></item><item><title>EndeavourOS Gnome 美化</title><link>https://mapleafgo.github.io/posts/linux/gnome_beautify/</link><pubDate>Wed, 04 Dec 2024 10:10:32 +0800</pubDate><guid>https://mapleafgo.github.io/posts/linux/gnome_beautify/</guid><description>&lt;img src="https://mapleafgo.github.io/posts/linux/gnome_beautify/A51AE26F-8089-4E33-8107-1E0EBEC3A0DE.png" alt="Featured image of post EndeavourOS Gnome 美化" />&lt;h2 id="简介">简介
 &lt;/h2>&lt;p>普天同庆！微信终于发布 Linux 版本了！之前日常使用 Linux 环境，总是会使用一段
 时间就弃坑，还是生态问题无法与其他系统比。现在由于信创，各家大厂都在积极适配 Linux ，我又决定拿起来试试。&lt;/p>
 &lt;h2 id="系统安装">系统安装
