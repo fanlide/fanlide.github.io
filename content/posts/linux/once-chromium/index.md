@@ -109,7 +109,7 @@ sudo ln -s /usr/bin/ungoogled-chromium /usr/bin/chromium
 编辑 `~/.config/i3/config`，添加如下行：
 
 ```bash
-exec --no-startup-id chromium --kiosk --disable-extensions --disable-translate --app=<your_url>
+exec --no-startup-id chromium --kiosk --hide-scrollbars --disable-extensions --disable-translate --app=<your_url>
 ```
 
 - <your_url>: 你的初始跳转页面
