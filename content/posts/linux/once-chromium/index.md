@@ -74,9 +74,11 @@ sudo apt install unclutter
 
 ```bash
 exec --no-startup-id unclutter -root # 隐藏鼠标
-exec --no-startup-id xset -dpms # 关闭屏幕自动熄屏
+exec --no-startup-id xset dpms 0 0 0 # 关闭屏幕自动熄屏
 exec --no-startup-id xset s off # 关闭屏幕保护
 ```
+
+不使用 `xset -dpms` 来禁用屏幕管理，因为当使用 `xset dpms force off` 或 `xset dpms force on` 时，会导致禁用失效
 
 ### 安装中文字体和 emoji 字体
 

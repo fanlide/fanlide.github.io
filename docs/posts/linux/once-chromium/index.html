@@ -31,9 +31,9 @@
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>exec</span> --no-startup-id unclutter -root <span class=c1># 隐藏鼠标</span>
-</span></span><span class=line><span class=cl><span class=nb>exec</span> --no-startup-id xset -dpms <span class=c1># 关闭屏幕自动熄屏</span>
+</span></span><span class=line><span class=cl><span class=nb>exec</span> --no-startup-id xset dpms <span class=m>0</span> <span class=m>0</span> <span class=m>0</span> <span class=c1># 关闭屏幕自动熄屏</span>
 </span></span><span class=line><span class=cl><span class=nb>exec</span> --no-startup-id xset s off <span class=c1># 关闭屏幕保护</span>
-</span></span></code></pre></td></tr></table></div></div><h3 id=安装中文字体和-emoji-字体>安装中文字体和 emoji 字体</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>不使用 <code>xset -dpms</code> 来禁用屏幕管理，因为当使用 <code>xset dpms force off</code> 或 <code>xset dpms force on</code> 时，会导致禁用失效</p><h3 id=安装中文字体和-emoji-字体>安装中文字体和 emoji 字体</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo apt install fonts-noto-cjk fonts-noto-color-emoji
 </span></span></code></pre></td></tr></table></div></div><h2 id=浏览器-安装及配置>浏览器 安装及配置</h2><p>在浏览器的选择上，优先选择的是 chromium 。但是实际使用后发现，右上角的翻译提示不管如何加启动参数都无法去除，最终选择使用 ungoogled-chromium 。它不带 google 翻译，自然也就不会出现翻译提示。</p><h3 id=安装浏览器>安装浏览器</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
